@@ -1,5 +1,9 @@
+<%@page import="com.model.communityDTO"%>
+<%@page import="com.model.dbDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +14,11 @@
 
 </head>
 <body>
+<%
+	dbDAO dbdao = new dbDAO();
+	ArrayList<communityDTO> cdto = dbdao.getCommunities();
+	
+%>
 	<div id="whole">
         <div id="mainframe">
             <div id="main-content">
@@ -28,6 +37,43 @@
                     </form>
                     </div>
                 </div>
+                
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped" style="text-align:center; margin:auto; width:430px; min-height: 350px; border:1px solid #dddddd">
+                <thead>
+                    <tr>
+                        <th style="background-color:#eeeeee; text-align:center;">번호</th>
+                        <th style="background-color:#eeeeee; text-align:center;">제목</th>
+                        <th style="background-color:#eeeeee; text-align:center;">작성자</th>
+                        <th style="background-color:#eeeeee; text-align:center;">작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%
+                    for(int i = 0; i < cdto.size(); i++)
+                    {
+                %>
+
+                    <tr>
+                        <td><%=cdto.get(i).getCommuNum() %></td>
+                        <td><a href="communityView.jsp?commuNum=<%= cdto.get(i).getCommuNum() %>"><%=cdto.get(i).getCommuTitle() %></a></td>
+                        <td><%=cdto.get(i).getMemberID() %></td>
+                        <td><%=cdto.get(i).getCommuDay() %></td>
+                    </tr>
+
+                <%
+                    }
+                %>
+                </tbody>
+            </table>
+            <a href="communityWrite.jsp" class="btn btn-primary pull-right">글쓰기</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
                 
                 <div id="main" style="background-color: white;">
                 

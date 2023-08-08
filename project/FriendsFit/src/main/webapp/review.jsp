@@ -73,7 +73,7 @@
 							// 더보기
 							reviewHTML += "<span class=\"CommunityListItem__showMoreText\">";
 
-							reviewHTML += "<a href='reviewSee.jsp?reviewNum=" + reviewList.get(i).getReviewNum() + "'>..더 보기</a>";
+							reviewHTML += "<a href='reviewView.jsp?reviewNum=" + reviewList.get(i).getReviewNum() + "'>..더 보기</a>";
 
 							reviewHTML += "</span>";
 							reviewHTML += "</span></div>";

@@ -83,7 +83,7 @@
 
 					</div>
 
-					<!-- 리뷰쓰기 -->
+					<!-- 리뷰댓글쓰기 -->
 					<form action="reviewCommentAction" method="post">
 						<%=reviewNum%>
 						<div class="review-comment-textarea">
@@ -108,7 +108,7 @@
 
 
 
-					<!-- 리뷰 보기 -->
+					<!-- 리뷰댓글보기 -->
 					<%
 					ArrayList<reviewComment_memberDTO> rcmdto = dbdao.getReviewComment(intReviewNum);
 					for (int i = 0; i < rcmdto.size(); i++) {

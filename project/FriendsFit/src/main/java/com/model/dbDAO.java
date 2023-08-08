@@ -284,5 +284,143 @@ public class dbDAO {
 		}
 		return null;
 	}
+
+	public void communityUpload(communityDTO cdto) {
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO tb_community VALUES (commu_num.NEXTVAL, ?, ?, ?, ?, 0, 0, SYSDATE, ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cdto.getCommuTitle());
+			psmt.setString(2, cdto.getCommuContent());
+			psmt.setInt(3, cdto.getFileNum());
+			psmt.setString(4, cdto.getMemberID());
+			psmt.setString(5, cdto.getFacilityCategory());
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+	}
+
+	public ArrayList<communityDTO> getCommunities() {
+		ArrayList<communityDTO> list = new ArrayList<communityDTO>();
+		getConnection();
+		try {
+			String sql = "select * from tb_community";
+			psmt = conn.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				communityDTO reviews = new communityDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+						rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9)
+						);
+				list.add(reviews);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	public communityDTO getCommunity(int commuNum) {
+		ArrayList<communityDTO> list = new ArrayList<communityDTO>();
+		getConnection();
+		try {
+			String sql = "select * from tb_community where commu_num=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				communityDTO reviews = new communityDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+						rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9)
+						);
+				list.add(reviews);
+			}
+			return list.get(0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
+	}
+
+	public int communityCommentUpload(communityCommentDTO ccdto) {
+		getConnection();
+		/*
+		 * 	private int commentNum;
+			private String commentContent;
+			private String memberID;
+			private int commuNum;
+			private int commentLike;
+			private String commentDay;
+		 */
+		System.out.println(ccdto.getCommentContent());
+		System.out.println(ccdto.getMemberID());
+		System.out.println(ccdto.getCommuNum());
+		System.out.println(ccdto.getCommentLike());
+
+		try {
+			String sql = "INSERT INTO tb_comment VALUES (COMMENT_NUM.NEXTVAL, ?, ?, ?, ?, SYSDATE)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, ccdto.getCommentContent());
+			psmt.setString(2, ccdto.getMemberID());
+			psmt.setInt(3, ccdto.getCommuNum());
+			psmt.setInt(4, ccdto.getCommentLike());
+
+			cnt = psmt.executeUpdate();
+
+			return cnt;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return cnt;
+	}
+
+	public ArrayList<communityComment_memberDTO> getCommunityComment(int commuNum) {
+		/*
+		 *  private String id;
+			private int point;
+			private String registerDate;
+			private String content;
+			private int like;
+		 */
+		ArrayList<communityComment_memberDTO> list = new ArrayList<communityComment_memberDTO>();
+		getConnection();
+		try {
+			String sql = "select a.member_id, MEMBER_POINT, a.comment_day, comment_content, comment_like from tb_comment a, tb_member b where a.member_id = b.member_id and commu_num=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				communityComment_memberDTO reviews = new communityComment_memberDTO(rs.getString(1), rs.getInt(2),
+						rs.getString(3), rs.getString(4), rs.getInt(5));
+				list.add(reviews);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
+	}
+
 }
 

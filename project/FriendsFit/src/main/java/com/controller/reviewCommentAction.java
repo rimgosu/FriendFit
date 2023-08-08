@@ -32,7 +32,7 @@ public class reviewCommentAction extends HttpServlet {
 		dbDAO dbdao = new dbDAO();
 		dbdao.reviewCommentUpload(commentdto);
 		
-		response.sendRedirect("reviewSee.jsp?reviewNum="+reviewNum);
+		response.sendRedirect("reviewView.jsp?reviewNum="+reviewNum);
 		
 		
 		
