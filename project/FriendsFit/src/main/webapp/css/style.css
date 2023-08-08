@@ -1,0 +1,500 @@
+@charset "EUC-KR";
+
+* {
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+::selection {
+    background-color: #ffffff;
+}
+
+#whole {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+
+#mainframe {
+    width: 440px;
+    height: auto; 
+    background-color: #ffffff;
+    box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.2), -10px 0px 20px -10px rgba(0,0,0,0.2); 
+}
+
+#aside {
+    display: none;
+    width: 380px;
+    height: auto; 
+    background-color: white;
+    box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.2), -10px 0px 20px -10px rgba(0,0,0,0.2); 
+    border-radius: 20px; 
+    margin: 20px 30px 10px 15px;
+    padding: 10px 10px 10px 10px;
+    position: sticky;
+}
+
+
+#header {
+    height: 48px;
+    padding: 8px 16px;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: #ffffff;
+}
+
+#main {
+    width: 440px;
+    /* chain of height */
+    height: auto;
+    position: relative;
+    
+    background-color: gray;
+    min-height: calc(100vh - 48px);
+
+    display: block;
+
+}
+
+#main-content {
+    width: 440px;
+    /* chain of height */
+    height: auto;
+}
+
+#main-navbar {
+    width: 440px;
+    height: 65px;
+    border-top: 0.909px;
+}
+
+#footer {
+    width: 380px;
+    height: 140px;
+    padding: 30px 30px calc(30px);
+    background-color: rgb(245, 245, 245);
+    border-top: 4px solid rgb(214,214,214);
+}
+
+
+.navbar {
+    background-color: white;
+    position: sticky;
+    bottom: 0px;
+    height: 65px;
+    width: 100%;
+    z-index: 10;
+    border-top: 1px solid rgba(237, 237, 237, 0.725);
+}
+
+.navbar-ul {
+    padding: 0px;
+    height: 65px;
+    width: 440px;
+    background-color: white;
+
+}
+
+.navbar-ul li:hover{
+	opacity: 0.5;
+}
+
+.navbar-li {
+    float: left;
+    
+    width: 87.997px;
+    height: 55px;
+
+    list-style: none;
+
+    text-align: center;
+    
+}
+
+.navbar-li {
+    padding-top: 10px;
+}
+
+
+.navbar-li a{
+    font-size: 12px;   
+    text-decoration: none;
+    color: rgb(102,102,102);
+}
+
+
+.searchbar {
+    width: 300px;
+    height: 50px;
+    margin: 0;
+    padding: 0px; 
+    display: block;
+}
+
+.searchsection{
+	box-sizing: border-box;
+    padding: 16px 26px 0px;
+}
+
+.searchbar-box-window {
+    display: block;
+    width: 342.216px;
+    height: 30px;    
+}
+
+.category-info {
+    width: 388.011px;
+    height: 27.997px;    
+    background-color: #ffffff;
+    padding: 0px 26px 16px !important;
+}
+
+
+.category-box {
+    width: 440px;
+    height: 190px; 
+    background-color: #ffffff;
+}
+
+.category-box-ol {
+    padding-left: 26px;
+    padding-right: 26px;
+    width: 388px;
+    height: 190px;
+    background-color: #ffffff;
+    text-align: center;
+    list-style-type: none;
+    list-style: none;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    box-sizing: border-box;
+    place-items: center;
+}
+
+.category-item {
+    width: 90.994px;
+    height: 85.994px;
+    float: left;    
+}
+
+.category-item:hover{
+	opacity: 0.5;
+}
+
+
+.mapbox {
+    width: 388.011px;
+    height: 436px;
+    padding: 26px 26px 26px 26px;
+    background-color: aquamarine;
+}
+
+.map {
+    width: 388.011px;
+    height: 436px;
+    background-color: black;
+}
+
+
+.communityframe {
+    width: 388.011px;
+    height: 435.966px;
+    padding: 26px 26px 26px 26px;
+    background-color: blueviolet;
+}
+
+.communitybox {
+    width: 388.011px;
+    height: 435.966px;
+    background-color: yellowgreen;
+}
+
+.communitybox-intro {
+    width: 388px;
+    height: 28px;
+    background-color: hotpink;
+}
+
+.seeall-arrow {
+    width: 24px;
+    height: 24px;
+    background-color: blue;
+    float: right;
+}
+
+.seeall {
+    width: 80px;
+    height: 24px;
+    background-color: white;
+    float: right;
+}
+
+.communitybox-contents {
+    width: 388px;
+    height: 392px;
+    background-color: aqua;
+    padding: 0px;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px 16px;
+}
+
+.communitybox-content {
+    width: 186px;
+    height: 184px;
+    gap: 9px;
+    cursor: pointer;
+    background-color: black;
+}
+
+.communitybox-content-img {
+    width: 100%;
+    border-radius: 8xpx;
+    height: 100px;
+    object-fit: cover;
+    display: block;
+    
+
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.communitybox-content-title {
+    width: 186px;
+    height: 20px;
+    background-color: bisque;
+}
+
+.communitybox-content-detail {
+    width: 186px;
+    height: 48px;
+    background-color: gray;
+}
+
+.category-box-ol li div{
+    padding: 10px 0px;
+    position: relative;
+    margin: 0px auto;
+    z-index: 1;
+    display: flex;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 97px;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.menu-text{
+    margin: 0px;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    letter-spacing: 0px;
+}
+
+.category-box-ol li div a{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.menu-category{
+    margin-bottom: 10px;
+}
+
+h1{
+    margin: 0px;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    letter-spacing: 0px;
+    display: block;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#header img{
+    height: 17px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.top-header{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    left: 90px;
+    top: 0px;
+    height: 100%;
+}
+
+.button-group{
+    min-width: 30px;
+}
+
+.sign-in-button{
+    height: 32px;
+    padding: 6px 14px;
+    border: 1px solid rgb(214, 214, 214);
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: rgb(0, 0, 0);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+button{
+    appearance: auto;
+    text-rendering: auto;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    margin: 0em;
+}
+
+.SignInPageTemplate{
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0px 49px;
+}
+
+.screen-main{
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    min-height: calc(100vh - 48px);
+}
+
+main{
+    display: block;
+}
+
+.SignInPageTemplate-1{
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 36px;
+    letter-spacing: 0px;
+    white-space: break-spaces;
+}
+
+.SignInPageTemplate h1 {
+    margin: unset;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.kakako{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    letter-spacing: 0px;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+    background-color: rgb(255, 205, 0);
+    color: rgb(0, 0, 0);
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 8px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 8px;
+    cursor: pointer;
+}
+
+.JoinButton{
+    margin-top: 26px;
+}
+
+.JoinButton-1{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.JoinButton img{
+    display: block;
+    margin: auto;
+}
+
+.searchbar input{
+    width: 70%;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px rgb(0, 0, 0) solid;
+}
+
+.Searchbutton{
+    padding-left: 10px;
+    line-height: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.searchbar > div{
+    cursor: pointer;
+    display: flex;
+    border-radius: 100px;
+    padding: 0px;
+}
+
+.searchsection{
+	padding: 20px 0px 20px 100px;
+}
+
+

@@ -1,0 +1,133 @@
+@charset "EUC-KR";
+#mainframe {
+	height: 1000px;
+}
+
+.login{
+	padding: 49px 39px;
+    color: #2e2e2e;
+}
+
+.boxTitle{
+	margin: 0 0 20px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: normal;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+.login fieldset{
+	position: relative;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 0 0 0 9px;
+    border: none;
+    vertical-align: top;
+    display: block;
+}
+
+.login legend{
+	visibility: hidden;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 0;
+    height: 0;
+    line-height: 0;
+}
+
+.ePlaceholder{
+	overflow: hidden;
+    display: block;
+    width: 100%;
+    margin: 0 0 8px;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    color: #8F8F91;
+}
+
+.login label{
+	cursor: default;
+}
+
+#member_id{
+	width: 100%;
+    height: 38px;
+    line-height: 38px;
+    padding: 2px 2px 2px 7px;
+    border: 0 none;
+    color: #8F8F91;
+    font-size: 14px;
+    color: #433;
+}
+
+#member_passwd{
+	    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    padding: 2px 2px 2px 7px;
+    border: 0 none;
+    font-size: 14px;
+    color: #433;
+}
+
+.sizeL{
+	display: block;
+    width: 100%;
+    min-width: 80px;
+    font-weight: bold;
+    font-size: 14px;
+    height: 46px;
+    line-height: 46px;
+    transition: background .25s ease;
+    padding: 0 !important;
+    box-sizing: border-box;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #333333;
+}
+
+.find{
+	overflow: hidden;
+    padding: 7px 0px 5px;
+    border: 0;
+    margin: 0 -3px;
+    
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.findlist {
+	float: left;
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 0 3px;
+    list-style: none;
+    margin: 0;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.findlist a{
+	color: #2e2e2e;
+    display: block;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 8px;
+    transition: border .25s ease;
+    cursor: pointer;
+    list-style: none;
+}
+

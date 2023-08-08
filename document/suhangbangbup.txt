@@ -1,0 +1,21 @@
+
+수행 방법
+▪데이터 확보방안
+- 공공데이터포털 api 활용, 포털 사이트 검색 크롤링, 지도 검색 후 수기 작성
+▪추진 전략( 일정, 수행 방법 등 )
+- 일정 : 
+1주차: 광주 헬스장 위치 데이터 확보 및 html 뼈대 구성, web server 호스팅 
+2주차: python flask와 jsp tomcat 연결 및 기본적인 리뷰 게시판 구현
+3주차: 스크립트 병합 및 ai를 활용한 이미지 인식 기능 구현
+4주차: 최종 css 마무리 작업 및 추가기능 구현
+- 수행 방법 : 
+지도 → kakao developers 카카오맵 web api 활용 
+헬스장 위치 추적 → 공공데이터포털 광주 운동, 광주 체육으로 검색 후 나오는 api 및 csv 파일 활용
+지번 및 도로명 위치를 좌표로 바꾸기 →  VWORLD 오픈API에서 Geocoder API 2.0 레퍼런스 활용
+자바 웹 서버 생성 → eclipse 및 tomcat server를 이용, jsp 파일로 서버 호스팅
+체육관 리뷰 CRUD 기능 → RESTful API 이용
+파이썬과 연동 → python flask를 활용, java jsp와 연동
+이미지를 글자로 인식 → google tesseract 및 python opencv 이용
+운동 정보 인식 →  yolov5를 활용한 데이터 학습 또는 amazon rekognition python 활용
+
+

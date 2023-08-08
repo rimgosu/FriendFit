@@ -1,0 +1,72 @@
+@charset "EUC-KR";
+
+#whole {
+    display: flex;
+    justify-content: center;
+    height: auto; 
+    width: 100%;
+}
+
+
+#mainframe {
+    width: 440px;
+    height: auto; 
+    background-color: #ffffff;
+    box-shadow: 10px 0px 20px -10px rgba(0,0,0,0.2), -10px 0px 20px -10px rgba(0,0,0,0.2); 
+}
+
+#header {
+    height: 48px;
+    padding: 8px 16px;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 100;
+    background-color: #ffffff;
+}
+
+#header img{
+    height: 17px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.top-header{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    left: 90px;
+    top: 0px;
+    height: 100%;
+}
+
+#main {
+    width: 440px;
+    /* chain of height */
+    height: auto;
+    position: relative;
+    
+    background-color: gray;
+    min-height: calc(100vh - 48px);
+
+    display: block;
+
+}
+
+#main-content {
+    width: 440px;
+    /* chain of height */
+    height: auto;
+}
+
+#main-navbar {
+    width: 440px;
+    height: 65px;
+    border-top: 0.909px;
+}
