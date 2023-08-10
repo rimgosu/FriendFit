@@ -1,3 +1,5 @@
+<%@page import="com.google.gson.Gson"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.model.MemberDTO"%>
 <%@page import="com.model.dbDAO"%>
 <%@page import="com.model.facilityClickDTO"%>
@@ -18,7 +20,9 @@
 		<div id="mainframe">
 
 			<div id="main-content">
-				<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+				<%
+				MemberDTO info = (MemberDTO) session.getAttribute("info");
+				%>
 				<div id="header">
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
@@ -27,12 +31,16 @@
 					</div>
 					<div class="button-group">
 
-						<% if(info == null){ %>
+						<%
+						if (info == null) {
+						%>
 						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
-						<% }else{ %>
+						<%
+						} else {
+						%>
 						<div class="GlobalHeader__StyledRightButtonGroup">
 							<button class="GlobalHeader__StyledButton">
 								<img src="img/userimage.png" alt="user profile"
@@ -40,7 +48,9 @@
 									onclick="location.href='mypage.jsp'">
 							</button>
 						</div>
-						<% } %>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
@@ -82,20 +92,42 @@
 		</div>
 
 		<%
-      String x = request.getParameter("x");
-      String y = request.getParameter("y");
+		String x = request.getParameter("x");
+		String y = request.getParameter("y");
 
-      if (x != null) {
-         facilityClickDTO fcdto = new facilityClickDTO();
-         dbDAO dbdao = new dbDAO();
-         fcdto = dbdao.getFacility(Double.parseDouble(x), Double.parseDouble(y));
-      %>
+		dbDAO dbdao = new dbDAO();
+		facilityClickDTO fcdto = new facilityClickDTO();
+		ArrayList<facilityClickDTO> facilityList = dbdao.getFacilities();
+		Gson gson = new Gson();
+		String jsonArray = gson.toJson(facilityList);
+		facilityClickDTO facility = new facilityClickDTO();
+
+		if (x != null) {
+			facility = dbdao.getFacility(Double.parseDouble(x), Double.parseDouble(y));
+
+			System.out.println(facility.getFacilityImageSrc());
+		%>
 
 		<div id="aside" style="display: block;">
+
+			<div class="facility-image">
+
+				<%
+				if (facility.getFacilityImageSrc() != null) {
+				%>
+				<img
+					style="width: 400px; height: 300px; overflow: hidden; border-radius: 15px;"
+					alt="" src="<%=facility.getFacilityImageSrc()%>">
+				<%
+				}
+				%>
+			</div>
+
 			<div class="place_section OP4V8" data-nclicks-area-code="btp">
 				<div class="zD5Nm f7aZ0">
 					<div id="_title" class="YouOG">
-						<span class="Fc1rA">센터명</span> <span class="DJJvD">센터종류</span>
+						<span class="Fc1rA"><%=facility.getFacilityName()%></span> <span
+							class="DJJvD"><%=facility.getFacilityCategoy()%></span>
 					</div>
 					<div class="info-review">
 						<span class="PXMot"> <a href="review.jsp" role="button"
@@ -116,7 +148,7 @@
                      </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-address">센터주소</div>
+						class="real-address"><%=facility.getFacilityAddr()%></div>
 				</div>
 
 				<div class="info-time thin-border">
@@ -128,7 +160,7 @@
                        </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-time">운영시간</div>
+						class="real-time"><%=facility.getFacilityTime()%></div>
 				</div>
 
 				<div class="info-tel thin-border">
@@ -140,7 +172,7 @@
                      </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-tel">전화번호 tel^^;</div>
+						class="real-tel"><%=facility.getFacilityTel()%></div>
 				</div>
 
 				<div class="info-price thin-border">
@@ -151,18 +183,18 @@
 								d="M8 17A8 8 0 108 1a8 8 0 000 16zm0-1A7 7 0 118 2a7 7 0 010 14zM4.33 9l1.03 3.75h1.08L7.6 9h.86l1.12 3.75h1.08L11.68 9H13V8h-1.04l.54-2h-1.02l-.51 2H9.14l-.6-2H7.6l-.62 2H5.14l-.5-2H3.5l.55 2H3v1h1.33zM5.4 9h1.28L6 11.21h-.04L5.4 9zm4.04 0h1.27l-.58 2.21h-.02L9.44 9zM8.16 8H7.9l.12-.36h.03l.1.36z"></path></svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-price">가격표</div>
+						class="real-price"><%=facility.getFacilityPrice()%></div>
 				</div>
 
 				<div class="info-payment thin-border">
 					<div class="svg-wrap">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 18"
 							class="DNzQ2" aria-hidden="true">
-                        <path
-								d="M8 16A7 7 0 108 2a7 7 0 000 14zm0 1A8 8 0 118 1a8 8 0 010 16zm.5-7.8l3.02 1.76a.5.5 0 01.19.68.5.5 0 01-.69.19L7.8 9.96a.5.5 0 01-.3-.46v-5a.5.5 0 011 0v4.7z"></path></svg>
+							<path
+								d="M14 6.5c0 .3.2.5.5.5s.5-.2.5-.5V4c0-.6-.4-1-1-1h-2.5c-.3 0-.5.2-.5.5s.2.5.5.5H14v2.5zm-13 0c0 .3.2.5.5.5s.5-.2.5-.5V4h2.5c.3 0 .5-.2.5-.5S4.8 3 4.5 3H2c-.6 0-1 .4-1 1v2.5zm1 5c0-.3-.2-.5-.5-.5s-.5.2-.5.5V14c0 .6.4 1 1 1h2.5c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H2v-2.5zm13 0c0-.3-.2-.5-.5-.5s-.5.2-.5.5V14h-2.5c-.3 0-.5.2-.5.5s.2.5.5.5H14c.6 0 1-.4 1-1v-2.5zm-10-3c-.3 0-.5.2-.5.5s.2.5.5.5h6c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H5z"></path></svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-payment">결제수단</div>
+						class="real-payment"><%=facility.getFacilityPayment()%></div>
 				</div>
 
 				<div class="info-amenities thin-border">
@@ -173,7 +205,7 @@
 								d="M10.05 15.48h4.45V7.86a3.26 3.26 0 01-2.22.86c-.81 0-1.57-.3-2.15-.81a3.24 3.24 0 01-2.15.81 3.24 3.24 0 01-2.13-.79 3.24 3.24 0 01-2.13.8 3.26 3.26 0 01-2.22-.87v7.62h4.44V11.3a.5.5 0 01.5-.5h3.11a.5.5 0 01.5.5v4.17zm-1 0V11.8h-2.1v3.67h2.1zm6.45-9.79a.5.5 0 010 .04v10.25a.5.5 0 01-.5.5H1a.5.5 0 01-.5-.5V5.73 5.7a3.11 3.11 0 010-.1.5.5 0 01.05-.22L2.3 1.78a.5.5 0 01.45-.28h10.5a.5.5 0 01.45.28l1.75 3.59a.5.5 0 01.05.22v.1zM3.06 2.5L1.5 5.7a2.19 2.19 0 002.22 2.02 2.24 2.24 0 001.74-.82.5.5 0 01.78 0 2.24 2.24 0 001.74.82c.7 0 1.33-.31 1.75-.85a.5.5 0 01.79 0 2.24 2.24 0 001.76.85c1.2 0 2.16-.9 2.22-2.02l-1.56-3.2H3.06z"></path></svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-amenities">편의시설</div>
+						class="real-amenities"><%=facility.getFacilityAmenities()%></div>
 				</div>
 
 				<div class="info-homepage thin-border">
@@ -185,7 +217,8 @@
                      </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-homepage">홈페이지 주소</div>
+						class="real-homepage">
+						<%=facility.getFacilityHomepage()%></div>
 				</div>
 
 				<div class="info-tag thin-border">
@@ -197,7 +230,7 @@
                      </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-tag">해시태그</div>
+						class="real-tag"><%=facility.hashCode()%></div>
 				</div>
 
 				<div class="info-info thin-border">
@@ -209,7 +242,7 @@
                      </svg>
 					</div>
 					<div style="display: flex; flex-direction: column;"
-						class="real-info">시설정보</div>
+						class="real-info"><%=facility.getFacilityInfo()%></div>
 				</div>
 
 				<div class="info-year thin-border">
@@ -220,7 +253,7 @@
 								d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"></path>
                      </svg>
 					</div>
-					<div class="real-year">설치년도</div>
+					<div class="real-year"><%=facility.getFacilityYear()%></div>
 				</div>
 			</div>
 
@@ -229,15 +262,22 @@
 					viewBox="0 0 24 24" class="DNzQ2" aria-hidden="true">
                   <path
 						d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" /></svg>
-				<div class="real-size">면적</div>
+				<div class="real-size"><%=facility.getFacilitySize()%></div>
 			</div>
 
 			<%
-         }
-         %>
+			}
+			%>
 
 		</div>
 	</div>
+
+
+	<script type="text/javascript">
+		var dtoListData =
+	<%=jsonArray%>
+		; // JSON 배열 데이터를 JavaScript 배열로 변환
+	</script>
 
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79769e254f2328cac41473351ff2b861"></script>

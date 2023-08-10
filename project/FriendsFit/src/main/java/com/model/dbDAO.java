@@ -245,22 +245,27 @@ public class dbDAO {
 	
 
 	public facilityClickDTO getFacility(double x, double y) {
+		/*
+		 * System.out.println("computing in getFacility" ); System.out.println(x);
+		 * System.out.println(y);
+		 */
 		
 		facilityClickDTO fcdto = new facilityClickDTO();
 		getConnection();
 		try {
 			String sql = "select a.file_num,\r\n"
-					+ "       a.FACILITY_NUM,\r\n"
-					+ "       a.FACILITY_NAME,\r\n"
-					+ "       a.FACILITY_category,\r\n"
-					+ "       a.FACILITY_TIME,\r\n"
-					+ "       a.FACILITY_TEL,\r\n"
-					+ "       a.FACILITY_ADDR,\r\n"
-					+ "       a.FACILITY_DAY \r\n"
-					+ "from tb_facility a, tb_review b \r\n"
-					+ "where a.FACILITY_NUM=b.FACILITY_NUM\r\n"
-					+ "  and ABS(a.FACILITY_X-?)<0.0001\r\n"
-					+ "  and ABS(a.FACILITY_Y-?)<0.0001";
+					+ "a.FACILITY_NUM,\r\n"
+					+ "a.FACILITY_NAME,\r\n"
+					+ "a.FACILITY_category,\r\n"
+					+ "a.FACILITY_TIME,\r\n"
+					+ "a.FACILITY_TEL,\r\n"
+					+ "a.FACILITY_ADDR,\r\n"
+					+ "a.FACILITY_DAY,\r\n"
+					+ "a.FACILITY_IMAGE_SRC\r\n"
+					+ "from tb_facility a, tb_review b\r\n"
+					+ "where a.facility_num  = b.facility_num (+)\r\n"
+					+ "  and abs(a.facility_x - ?) < 0.001\r\n"
+					+ "  and abs(a.facility_y - ?) < 0.001";
 			psmt = conn.prepareStatement(sql);
 			psmt.setDouble(1, x);
 			psmt.setDouble(2, y);
@@ -274,6 +279,7 @@ public class dbDAO {
 				fcdto.setFacilityTel(rs.getString(6));
 				fcdto.setFacilityAddr(rs.getString(7));
 				fcdto.setFacilityDay(rs.getString(8));
+				fcdto.setFacilityImageSrc(rs.getString(9));
 			}
 			return fcdto;
 		} catch (SQLException e) {
@@ -492,7 +498,46 @@ public class dbDAO {
 		return null;
 	}
 	
-	
+	public ArrayList<facilityClickDTO> getFacilities() {
+	    ArrayList<facilityClickDTO> list = new ArrayList<facilityClickDTO>();
+	    getConnection();
+	    try {
+	        String sql = "select * from tb_facility";
+	        psmt = conn.prepareStatement(sql);
+	        ResultSet rs = psmt.executeQuery();
+	        while (rs.next()) {
+	            facilityClickDTO facility = new facilityClickDTO(
+	                    rs.getInt(1),                // facilityNum
+	                    rs.getString(2),             // facilityName
+	                    rs.getString(3),             // facilityCategory
+	                    rs.getString(4),             // facilityMainFacility
+	                    rs.getString(5),             // facilityTime
+	                    rs.getString(6),             // facilityTel
+	                    rs.getString(7),             // facilityPrice
+	                    rs.getString(8),             // facilityPayment
+	                    rs.getString(9),             // facilityAmenities
+	                    rs.getString(10),            // facilityHomepage
+	                    rs.getString(11),            // facilityTag
+	                    rs.getString(12),            // facilityInfo
+	                    rs.getString(13),            // facilityYear
+	                    rs.getInt(14),               // facilitySize
+	                    rs.getString(15),            // facilityAddr
+	                    rs.getDouble(16),               // facilityX
+	                    rs.getDouble(17),               // facilityY
+	                    rs.getString(18),            // facilityDay
+	                    rs.getInt(19),               // fileNum
+	                    rs.getString(20)             // facilityImageSrc
+	            );
+	            list.add(facility);
+	        }
+	        return list;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        close();
+	    }
+	    return null;
+	}
 
 }
 

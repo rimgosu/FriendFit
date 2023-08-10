@@ -2,6 +2,10 @@
  * 
  */
 
+
+
+
+
 navigator.geolocation.getCurrentPosition(function(position) {
 	console.log("Latitude is :", position.coords.latitude);
 	console.log("Longitude is :", position.coords.longitude);
@@ -10,7 +14,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
-			level: 3, // 지도의 확대 레벨
+			level: 4, // 지도의 확대 레벨
 			mapTypeId: kakao.maps.MapTypeId.ROADMAP
 			// 지도종류
 		};
@@ -30,11 +34,15 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	}
 
 	// 예제 사용법
-	addPosition('카카오', 37.5096, 127.0000);
+	console.log(dtoListData);
+	for (let i=0; i<dtoListData.length; i++) {
+		addPosition(dtoListData[i].facilityName, dtoListData[i].facilityX, dtoListData[i].facilityY);
+	}
+/*	addPosition('카카오', 37.5096, 127.0000);
 	addPosition('생태연못', 33.450936, 126.569477);
 	addPosition('텃밭', 33.450879, 126.569940);
 	addPosition('근린공원', 33.451393, 126.570738);
-	addPosition('근린공원', 34.451393, 127.570738);
+	addPosition('근린공원', 34.451393, 127.570738);*/
 
 	for (var i = 0; i < positions.length; i++) {
 		// 마커를 생성합니다
