@@ -110,7 +110,7 @@
 
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79769e254f2328cac41473351ff2b861"></script>
-	<script src="js/_map.js"></script>
+	<script src="js/_map2.js"></script>
 
 </body>
 </html>

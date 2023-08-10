@@ -72,13 +72,12 @@
 					</div>
 					<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 					<script src="js/bootstrap.js"></script>
-					
+
 					<!-- 리뷰댓글쓰기 -->
 					<form action="communityCommentAction" method="post">
 						<%= commuNum %>
 						<div class="commu-comment-textarea">
-							<input name="cNum" value="<%= commuNum %>"
-								style="display: none;">
+							<input name="cNum" value="<%= commuNum %>" style="display: none;">
 							<textarea name="commuComment" maxlength="440"
 								data-testid="comment-textarea" placeholder="댓글을 입력해주세요."
 								class="CommunityDetailTemplate__StyledCommentTextarea-sc-alice7-27"
@@ -162,8 +161,8 @@
 							alt="column icon" width="24" height="24" style="cursor: pointer"
 							onclick="location.href='column.jsp'"> <br>컬럼</li>
 						<li class="navbar-li5 navbar-li"><img
-							src="img/nav_commu.svg" alt="commu icon" width="24" height="24"
-							style="cursor: pointer" onclick="location.href='commu.jsp'">
+							src="img/nav_review.svg" alt="review icon" width="24" height="24"
+							style="cursor: pointer" onclick="location.href='review.jsp'">
 							<br>ocr리뷰</li>
 					</ul>
 				</div>

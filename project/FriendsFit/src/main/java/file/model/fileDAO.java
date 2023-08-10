@@ -131,4 +131,31 @@ public class fileDAO {
 	}
 	
 	
+	public String getFileRealName(int fileNum) {
+		getConnection();
+		String fileRealName = null;
+		
+		try {	
+			String sql = "select FILE_REAL_NAME from tb_file where file_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, fileNum);
+			
+			
+			
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				fileRealName = rs.getString(1);
+			}
+			return fileRealName;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return fileRealName;	
+	}
+	
 }

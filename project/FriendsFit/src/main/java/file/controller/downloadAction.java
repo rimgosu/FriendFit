@@ -24,8 +24,7 @@ public class downloadAction extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String fileName = request.getParameter("file");
-//		String directory = this.getServletContext().getRealPath("/upload/");
-		String directory = "C:/JSP/upload";
+		String directory = this.getServletContext().getRealPath("/upload/");
 		java.io.File file = new java.io.File(directory + "/" + fileName);
 		
 		String mimeType= getServletContext().getMimeType(file.toString());

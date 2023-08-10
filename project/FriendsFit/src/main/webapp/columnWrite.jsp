@@ -7,7 +7,7 @@
 <title>FriendsFit</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/slideStyle.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
 	<div id="whole">
@@ -27,49 +27,45 @@
 					</div>
 				</div>
 
-				<div>커뮤니티 글쓰기 페이지</div>
-				<div>
-
-					<form action="communityAction" method="post"
-						enctype="multipart/form-data">
-
+				<div id="main" style="background-color: white;">
+					<div class="column-wrapper">
+						<div>컬럼 글쓰기 페이지</div>
 						<div>
 
-							<input type="text" name="commuTitle">
+							<form action="columnAction" method="post"
+								enctype="multipart/form-data">
+
+								<div>
+									<input type="text" name="columnTitle" placeholder="컬럼 제목 입력..">
+								</div>
+								<div>
+									<input type="text" name="columnWriter"
+										placeholder="컬럼작성자명(회사 이름 등)">
+								</div>
+								<div>
+
+									<input type="file" name="file">
+
+								</div>
+								<div>
+
+									<textarea name="columnContent" rows="8" cols="40" placeholder="컬럼 내용 입력.."></textarea>
+									<br>
+
+								</div>
+								<div>
+
+									<input type="submit" value="등록">
+
+								</div>
+							</form>
 
 						</div>
-						<div>
 
-							<select name="facilityCategory">
-								<option>헬스장</option>
-								<option>수영</option>
-								<option>자세교정</option>
-								<option>크로스핏</option>
-								<option>라켓스포츠</option>
-								<option>클라이밍</option>
-								<option>무도장</option>
-								<option>골프</option>
-								<option>기타시설</option>
-							</select>
 
-						</div>
-						<div>
 
-							<input type="file" name="file">
+					</div>
 
-						</div>
-						<div>
-
-							<textarea name="commuContent" rows="8" cols="40"></textarea>
-							<br>
-
-						</div>
-						<div>
-
-							<input type="submit" value="등록">
-
-						</div>
-					</form>
 
 				</div>
 

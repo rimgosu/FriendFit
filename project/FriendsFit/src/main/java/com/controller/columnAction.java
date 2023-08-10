@@ -11,16 +11,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.columnDTO;
 import com.model.communityDTO;
 import com.model.dbDAO;
-import com.model.reviewDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-@WebServlet("/communityAction")
-public class communityAction extends HttpServlet {
+/**
+ * Servlet implementation class columnAction
+ */
+@WebServlet("/columnAction")
+public class columnAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -31,15 +38,14 @@ public class communityAction extends HttpServlet {
 
 		MultipartRequest multipartRequest = new MultipartRequest(request, directory, maxSize, encoding,
 				new DefaultFileRenamePolicy());
-		String commuTitle = multipartRequest.getParameter("commuTitle");
-		String facilityCategory = multipartRequest.getParameter("facilityCategory");
-		String commuContent = multipartRequest.getParameter("commuContent");
+		String columnTitle = multipartRequest.getParameter("columnTitle");
+		String columnWriter = multipartRequest.getParameter("columnWriter");
+		String columnContent = multipartRequest.getParameter("columnContent");
 
-		communityDTO cdto = new communityDTO();
-		cdto.setCommuTitle(commuTitle);
-		cdto.setCommuContent(commuContent);
-		cdto.setMemberID("TEST4");
-		cdto.setFacilityCategory(facilityCategory);
+		columnDTO cldto = new columnDTO();
+		cldto.setColumnTitle(columnTitle);
+		cldto.setColumnContent(columnContent);
+		cldto.setColumnWriter(columnWriter);
 
 		Enumeration fileNames = multipartRequest.getFileNames();
 		while (fileNames.hasMoreElements()) {
@@ -61,15 +67,15 @@ public class communityAction extends HttpServlet {
 				dbDAO dbdao = new dbDAO();
 				int fileNum = 0;
 				fileNum = dbdao.fileUpload(fileName, fileRealName);
-				cdto.setFileNum(fileNum);
+				cldto.setFileNum(fileNum);
 
-				dbdao.communityUpload(cdto);
+				dbdao.columnUpload(cldto);
 
 			}
 
 		}
 
-		response.sendRedirect("community.jsp");
+		response.sendRedirect("column.jsp");
 
 	}
 

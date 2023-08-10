@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "EUC-KR";@charset "EUC-KR";
 
 * {
     margin: 0px;
@@ -202,7 +202,7 @@ html, body {
     width: 388.011px;
     height: 436px;
     padding: 26px 26px 26px 26px;
-    background-color: aquamarine;
+    background-color: #ffffff;
 }
 
 .map {

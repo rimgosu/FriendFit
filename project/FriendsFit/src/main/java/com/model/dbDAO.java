@@ -422,5 +422,77 @@ public class dbDAO {
 		return null;
 	}
 
+	public void columnUpload(columnDTO cldto) {
+		// TODO Auto-generated method stub
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO tb_column VALUES (column_num.nextval, ?, ?, ?, sysdate, ?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cldto.getColumnTitle());
+			psmt.setString(2, cldto.getColumnContent());
+			psmt.setInt(3, cldto.getFileNum());
+			psmt.setString(4, cldto.getColumnWriter());
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		
+	}
+	
+	public ArrayList<columnDTO> getColumns() {
+		ArrayList<columnDTO> list = new ArrayList<columnDTO>();
+		getConnection();
+		try {
+			String sql = "select * from tb_column order by column_num desc";
+			psmt = conn.prepareStatement(sql);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				columnDTO column = new columnDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6)
+						);
+				list.add(column);
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	public columnDTO getColumn(int columnNum) {
+		ArrayList<columnDTO> list = new ArrayList<columnDTO>();
+		getConnection();
+		try {
+			String sql = "select * from tb_column where column_num=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, columnNum);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				columnDTO column = new columnDTO(
+						rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6)
+						);
+				list.add(column);
+			}
+			return list.get(0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
+	}
+	
+	
+
 }
 
