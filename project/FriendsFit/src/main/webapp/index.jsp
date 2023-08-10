@@ -168,8 +168,8 @@
 					</div>
 
 
-					<div class="mapbox">
-						<div class="map"></div>
+					<div class="mapbox" style="background:white;">
+						<div class="map" id="map"></div>
 					</div>
 
 
@@ -229,5 +229,8 @@
 	</div>
 
 	<script type="text/javascript" src="js/mainBanner.js"></script>
+	<script
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79769e254f2328cac41473351ff2b861"></script>
+	<script src="js/_map2.js"></script>
 </body>
 </html>
