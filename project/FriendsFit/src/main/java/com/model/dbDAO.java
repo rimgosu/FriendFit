@@ -122,7 +122,7 @@ public class dbDAO {
 		ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
 		getConnection();
 		try {
-			String sql = "select * from tb_review";
+			String sql = "select * from tb_review WHERE ROWNUM <= 10";
 			psmt = conn.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
@@ -166,6 +166,39 @@ public class dbDAO {
 				list.add(reviews);
 			}
 			return list.get(0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return null;
+	}
+	
+	public ArrayList<reviewSelectDTO> getReviewsInFacility(int facilityNum) {
+		ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
+		getConnection();
+		try {
+			String sql = "select * from tb_review where facilityNum=?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, facilityNum);
+			ResultSet rs = psmt.executeQuery();
+			while (rs.next()) {
+				reviewSelectDTO reviews = new reviewSelectDTO(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getInt(5),
+						rs.getInt(6),
+						rs.getInt(7),
+						rs.getInt(8),
+						rs.getInt(9),
+						rs.getString(10)
+						);
+				list.add(reviews);
+			}
+			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,33 +286,37 @@ public class dbDAO {
 		facilityClickDTO fcdto = new facilityClickDTO();
 		getConnection();
 		try {
-			String sql = "select a.file_num,\r\n"
-					+ "a.FACILITY_NUM,\r\n"
-					+ "a.FACILITY_NAME,\r\n"
-					+ "a.FACILITY_category,\r\n"
-					+ "a.FACILITY_TIME,\r\n"
-					+ "a.FACILITY_TEL,\r\n"
-					+ "a.FACILITY_ADDR,\r\n"
-					+ "a.FACILITY_DAY,\r\n"
-					+ "a.FACILITY_IMAGE_SRC\r\n"
-					+ "from tb_facility a, tb_review b\r\n"
-					+ "where a.facility_num  = b.facility_num (+)\r\n"
-					+ "  and abs(a.facility_x - ?) < 0.001\r\n"
-					+ "  and abs(a.facility_y - ?) < 0.001";
+			String sql = "select * from tb_facility "
+					+ "where abs(facility_x - ?) < 0.001\r\n"
+					+ "  and abs(facility_y - ?) < 0.001";
 			psmt = conn.prepareStatement(sql);
 			psmt.setDouble(1, x);
 			psmt.setDouble(2, y);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
-				fcdto.setFileNum(rs.getInt(1));
-				fcdto.setFacilityNum(rs.getInt(2));
-				fcdto.setFacilityName(rs.getString(3));
-				fcdto.setFacilityCategoy(rs.getString(4));
+				fcdto.setFacilityNum(rs.getInt(1));
+				fcdto.setFacilityName(rs.getString(2));
+				fcdto.setFacilityCategoy(rs.getString(3));
+				fcdto.setFacilityMainFacility(rs.getString(4));
 				fcdto.setFacilityTime(rs.getString(5));
 				fcdto.setFacilityTel(rs.getString(6));
-				fcdto.setFacilityAddr(rs.getString(7));
-				fcdto.setFacilityDay(rs.getString(8));
-				fcdto.setFacilityImageSrc(rs.getString(9));
+				fcdto.setFacilityPrice(rs.getString(7));
+				fcdto.setFacilityPayment(rs.getString(8));
+				fcdto.setFacilityAmenities(rs.getString(9));
+				fcdto.setFacilityHomepage(rs.getString(10));
+				fcdto.setFacilityTag(rs.getString(11));
+				fcdto.setFacilityInfo(rs.getString(12));
+				fcdto.setFacilityYear(rs.getString(13)); // 문자열로 저장되어 있는 경우
+				fcdto.setFacilitySize(rs.getInt(14));
+				fcdto.setFacilityAddr(rs.getString(15));
+				fcdto.setFacilityX(rs.getDouble(16));
+				fcdto.setFacilityY(rs.getDouble(17));
+				fcdto.setFacilityDay(rs.getString(18));
+				fcdto.setFileNum(rs.getInt(19));
+				fcdto.setFacilityImageSrc(rs.getString(20));
+
+
+				
 			}
 			return fcdto;
 		} catch (SQLException e) {

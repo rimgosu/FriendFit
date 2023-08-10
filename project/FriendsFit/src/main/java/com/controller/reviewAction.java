@@ -10,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.model.MemberDTO;
 import com.model.dbDAO;
 import com.model.reviewDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -55,7 +57,10 @@ public class reviewAction extends HttpServlet {
 		reviewdto.setReviewTitle(reviewTitle);
 		reviewdto.setReviewContent(reviewContent);
 		reviewdto.setReviewGrade(reviewGradeInt);
-		reviewdto.setMemberID("TEST4");
+		HttpSession session = request.getSession();
+		MemberDTO info = (MemberDTO) session.getAttribute("info");
+		String memberId = info.getMember_id();
+		reviewdto.setMemberID(memberId);
 		reviewdto.setFacilityNum(facilityNumInt);
 		
 		

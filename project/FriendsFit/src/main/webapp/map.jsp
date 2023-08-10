@@ -1,3 +1,4 @@
+<%@page import="com.model.reviewSelectDTO"%>
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.MemberDTO"%>
@@ -12,7 +13,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/map.css">
-
 </head>
 <body>
 
@@ -129,12 +129,7 @@
 						<span class="Fc1rA"><%=facility.getFacilityName()%></span> <span
 							class="DJJvD"><%=facility.getFacilityCategoy()%></span>
 					</div>
-					<div class="info-review">
-						<span class="PXMot"> <a href="review.jsp" role="button"
-							class="place_bluelink">방문자리뷰<!-- --> <em>00</em>
-						</a>
-						</span>
-					</div>
+
 				</div>
 			</div>
 
@@ -255,15 +250,45 @@
 					</div>
 					<div class="real-year"><%=facility.getFacilityYear()%></div>
 				</div>
+
+				<div class="info-size thin-border">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+						viewBox="0 0 24 24" class="DNzQ2" aria-hidden="true">
+                  <path
+							d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" /></svg>
+					<div class="real-size"><%=facility.getFacilitySize()%></div>
+				</div>
 			</div>
 
-			<div class="info-size thin-border">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-					viewBox="0 0 24 24" class="DNzQ2" aria-hidden="true">
-                  <path
-						d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z" /></svg>
-				<div class="real-size"><%=facility.getFacilitySize()%></div>
-			</div>
+			<%-- <div class="review-container thin-border">
+
+
+				<div class="reviews">
+
+					<%
+					request.setCharacterEncoding("UTF-8");
+					response.setCharacterEncoding("UTF-8");
+
+					ArrayList<reviewSelectDTO> facilityReviews = dbdao.getReviewsInFacility(facility.getFacilityNum());
+					
+					for (int i=0; i<facilityReviews.size(); i++) {
+					%>
+					
+					<div class="review-item">
+					
+						<div class="review-"></div>
+						<div class="review-id"></div>
+						
+					</div>
+
+					<% 
+					}
+					%>
+
+
+				</div>
+			</div> --%>
+
 
 			<%
 			}
@@ -274,9 +299,17 @@
 
 
 	<script type="text/javascript">
+		// JSON 배열 데이터를 JavaScript 배열로 변환
 		var dtoListData =
 	<%=jsonArray%>
-		; // JSON 배열 데이터를 JavaScript 배열로 변환
+		;
+
+		var xClick =
+	<%=x%>
+		;
+		var yClick =
+	<%=y%>
+		;
 	</script>
 
 	<script

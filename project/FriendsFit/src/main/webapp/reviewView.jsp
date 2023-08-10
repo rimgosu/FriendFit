@@ -1,3 +1,4 @@
+<%@page import="file.model.fileDAO"%>
 <%@page import="com.model.MemberDTO"%>
 <%@page import="com.model.reviewComment_memberDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -50,6 +51,7 @@
 						<a href="reviewWrite.jsp">리뷰쓰기</a>
 					</div>
 
+
 					<div class="reviewcontainer">
 
 
@@ -64,6 +66,8 @@
 						dbDAO dbdao = new dbDAO();
 						reviewSelectDTO review = dbdao.getReview(intReviewNum);
 						request.setAttribute("review", review);
+						fileDAO filedao = new fileDAO();
+						String fileRealName = filedao.getFileRealName(review.getFileNum());
 						%>
 
 						<div class="community-list-item">
@@ -72,7 +76,9 @@
 								<div class="CommunityListItem__id">${review.memberID}</div>
 								<div class="CommunityListItem__point">(포인트)</div>
 								<div class="CommunityListItem__registerDate">${review.reviewDay}</div>
-								<div class="CommunityListItem__content"></div>
+								<div class="Community-image"><img style="width:420px; padding-right: 10px; padding-left: 10px" src="upload/<%= fileRealName %>"></div>
+								
+								<div class="CommunityListItem__content">${review.reviewContent}</div>
 							</div>
 							<section class="CommunityListItem__StyledCommunityActionBar">
 								<button class="like-button">
@@ -100,8 +106,7 @@
 					<form action="reviewCommentAction" method="post">
 						<%=reviewNum%>
 						<div class="review-comment-textarea">
-							<input name="rNum" value="<%=reviewNum%>"
-								style="display: none;">
+							<input name="rNum" value="<%=reviewNum%>" style="display: none;">
 							<textarea name="reviewComment" maxlength="440"
 								data-testid="comment-textarea" placeholder="댓글을 입력해주세요."
 								class="CommunityDetailTemplate__StyledCommentTextarea-sc-alice7-27"

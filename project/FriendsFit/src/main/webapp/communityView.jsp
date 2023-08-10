@@ -1,3 +1,4 @@
+<%@page import="file.model.fileDAO"%>
 <%@page import="com.model.MemberDTO"%>
 <%@page import="com.model.communityComment_memberDTO"%>
 <%@page import="com.model.communityCommentDTO"%>
@@ -21,6 +22,9 @@
 	int commuNumInt = Integer.parseInt(commuNum);
 	dbDAO dbdao = new dbDAO();
 	communityDTO cdto = dbdao.getCommunity(commuNumInt);
+	
+	fileDAO filedao = new fileDAO();
+	String fileRealName = filedao.getFileRealName(cdto.getFileNum());
 	
 %>
 
@@ -77,6 +81,8 @@
 						</div>
 
 						<div class="bbs-content">
+							<div class="Community-image"><img style="width:420px; padding-right: 10px; padding-left: 10px" src="upload/<%= fileRealName %>"></div>
+								
 							<div class="content-text">
 								<%= cdto.getCommuContent() %>
 							</div>
