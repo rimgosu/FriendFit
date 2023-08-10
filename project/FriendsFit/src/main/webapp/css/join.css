@@ -1,15 +1,15 @@
 @charset "EUC-KR";
 
 #joinForm {
-	margin: 0 15px 0 15px;
-	padding: 0;
-	display: block;
+   margin: 0 15px 0 15px;
+   padding: 0;
+   display: block;
 }
 
 .joinwrap{
-	padding: 0;
-	display: block;
-	font: 0.75em 'Montserrat','Nanum Gothic','malgun gothic',Arial,Verdana,AppleGothic,sans-serif;
+   padding: 0;
+   display: block;
+   font: 0.75em 'Montserrat','Nanum Gothic','malgun gothic',Arial,Verdana,AppleGothic,sans-serif;
     color: #353535;
     width: 100%;
     height: auto;
@@ -18,13 +18,13 @@
 }
 
 .titleArea {
-	min-height: 30px;
+   min-height: 30px;
     margin: 10px 0 20px;
     border-bottom: 0px solid #e8e8e8;
 }
 
 .titleArea h2{
-	display: inline-block;
+   display: inline-block;
     color: #2e2e2e;
     font-size: 18px;
     margin: 0;
@@ -37,7 +37,7 @@
 }
 
 .basic {
-	padding: 50px 0 10px;
+   padding: 50px 0 10px;
     font-size: 16px;
     color: #2e2e2e;
     margin: 0;
@@ -51,7 +51,7 @@
 }
 
 .required {
-	margin: -25px 0 10px;
+   margin: -25px 0 10px;
     color: #353535;
     text-align: right;
     padding: 0;
@@ -63,7 +63,7 @@
 }
 
 .ec-base-table{
-	margin: 0;
+   margin: 0;
     padding: 0;
     display: block;
 }
@@ -89,26 +89,26 @@
 }
 
 caption {
-	display: none;
-	text-align: -webkit-center;
+   display: none;
+   text-align: -webkit-center;
 }
 
 colgroup {
-	display: table-column-group;
+   display: table-column-group;
 }
 
 col {
-	display: table-column;
+   display: table-column;
 }
 
 tbody{
-	display: table-row-group;
+   display: table-row-group;
     vertical-align: middle;
     border-color: inherit;
 }
 
 tr {
-	display: table-row;
+   display: table-row;
     vertical-align: inherit;
     border-color: inherit;
 }
@@ -143,8 +143,8 @@ th, td {
 }
 
 td{
-	margin: 0;
-	display: table-cell;
+   margin: 0;
+   display: table-cell;
 }
 
 input[type=text], input[type=password], input[type=number] {
@@ -162,7 +162,7 @@ input, select, textarea, button {
 }
 
 input{
-	margin: 0;
+   margin: 0;
 }
 
 input:not([type="range"]):not([type="color"]) {
@@ -247,7 +247,7 @@ ul {
 }
 
 th{
-	display: table-cell;
+   display: table-cell;
 }
 
 input[type=text], input[type=password] {
@@ -339,7 +339,7 @@ option {
 }
 
 #career{
-	width: 200px;
+   width: 200px;
 }
 
 select {
