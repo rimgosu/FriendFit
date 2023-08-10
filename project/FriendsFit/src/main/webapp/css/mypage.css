@@ -1,0 +1,223 @@
+@charset "EUC-KR";
+
+.MyPageTemplate{
+   padding: 10px 26px 48px;
+    height: 100%;
+    box-sizing: border-box;
+    
+    display: block;
+    margin: 0px;
+}
+
+.MyPageTemplate img {
+   overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.Breadcrumb__Nav {
+   display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 18px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.Breadcrumb__Nav ol {
+   width: 100%;
+    display: flex;
+    list-style: none;
+    height: 18px;
+    margin: 0px;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.Breadcrumb__Nav ol li {
+   display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    text-align: -webkit-match-parent;
+}
+
+.Breadcrumb__Nav ol li a {
+   text-decoration: none;
+    color: rgb(0, 0, 0) !important;
+}
+
+.Breadcrumb__Nav ol li a img {
+   margin-top: 6.9px;
+}
+
+.Breadcrumb__Nav ol li:last-child {
+    overflow: hidden;
+    margin-right: 16px;
+}
+
+.Breadcrumb__Nav ol li ~ li svg {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.Breadcrumb__Nav ol li ~ li svg * {
+   fill: rgb(188, 188, 188) !important;
+    stroke: rgb(188, 188, 188) !important;
+}
+
+:not(svg) {
+    transform-origin: 0px 0px;
+}
+
+.Breadcrumb__Nav ol li span {
+   overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Text__Container {
+   margin: 0px;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 16px;
+    letter-spacing: 0px;
+}
+
+.MyPageTemplate__StyledUserProfileWrapper {
+   margin-top: 11px;
+}
+
+.UserProfile__StyledUserProfile {
+   display: flex;
+    position: relative;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.UserProfile__StyledImageWrapper {
+   position: relative;
+    margin-right: 16px;
+    height: 84px;
+}
+
+.UserProfile__StyledLevel {
+   position: absolute;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 26px;
+    width: 26px;
+    border: 2px solid rgb(102, 102, 102);
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+.UserProfile__StyledNickname {
+   font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+.sign-out-button {
+   position: absolute;
+    cursor: pointer;
+    right: 0px;
+    padding: 8px 12px;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 40px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(102, 102, 102);
+}
+
+.MenuButtonWithArrowIcon__StyledButton {
+   display: flex;
+    width: 100%;
+    margin-top: 45px;
+    padding: unset;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+}
+
+.icon-in-menu-button {
+   margin-right: 3px;
+    padding-top: 4px;
+}
+
+.MenuButtonWithArrowIcon__StyledLabel {
+   font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: rgb(0, 0, 0);
+    flex: 1 1 0%;
+    text-align: left;
+}
+
+.MenuButtonWithArrowIcon__StyledRightIcon {
+   padding-top: 4px;
+}
+
+.MyPageTemplate__StyledImageBanner {
+   position: absolute;
+    left: 26px;
+    right: 26px;
+    bottom: 48px;
+}
+
+.ImageBanner__StyledContainer {
+   overflow: hidden;
+    line-height: 0;
+    width: 100%;
+    user-select: none;
+}
+
+.slick-slider {
+    box-sizing: border-box;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list, .slick-slider, .slick-track {
+    position: relative;
+    display: block;
+}
+
+.ImageBanner__StyledContainer .slick-list {
+   border-radius: 8px;
+}
+
+.slick-track:after, .slick-track:before {
+    display: table;
+    content: '';
+}
+
+.ImageBanner__StyledSliderItem {
+   user-select: none;
+    cursor: pointer;
+    outline: 0px;
+}
+
+.slick-track:after {
+    clear: both;
+}

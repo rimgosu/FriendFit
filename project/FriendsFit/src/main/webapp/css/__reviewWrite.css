@@ -1,0 +1,257 @@
+.main-container {
+   font-family: helvetica,Apple-SD-Gothic-Neo,sans-serif!important;
+}
+
+.page-title {
+    font-family: helvetica,Apple-SD-Gothic-Neo,sans-serif!important;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-align: center!important;
+    display: block!important;
+    margin-top: 20px;
+}
+
+
+
+.form-container {
+    border-top: 1px solid #dddddd;
+}
+
+.review-form {
+    /* Style for the form itself */
+}
+.search-wrapper {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-bar {
+   margin-top: 15px;
+}
+
+.search-input {
+    width: 380px;
+    height: 30px;
+   margin-top: 15px;
+
+    border: 1px solid #c0c0c0;
+
+}
+
+.search-inputimg {
+   margin-top: 15px;
+   margin-left: 15px;
+}
+
+.invisible {
+   display: none;
+}
+
+.select-results {
+   width: 353px;
+   height: 20px;   
+
+
+}
+
+#results-wrapper {
+
+   width: 383.963px;
+
+    background: white;
+    border: 1px solid black;
+    padding: 0 0 0 0;
+}
+.results-box {
+   height:100px;
+      width: 370px;
+      overflow: auto;
+}
+.search-results {
+
+}
+
+.title-section {
+
+}
+
+.review-title {
+    border: 1px solid #c0c0c0;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    margin-left: 26px;
+    width: 381px;
+    height: 30px;
+}
+
+.file-section {
+   display: flex;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    margin-left: 22px;
+}
+
+.review-star-section {
+   text-align: center!important;
+   padding-top: 28px!important;
+    padding-bottom: 28px!important;
+    padding-right: 16px!important;
+    padding-left: 16px!important;
+    
+    border-top: 6px solid #ededed;
+}
+
+.review-star {
+   font-size: 14px;
+    color: #000;
+    cursor: default;
+    display: block!important;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+  margin: 0 auto;
+  
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+
+.content-section {
+   margin-bottom: 15px;
+}
+
+.content-textarea {
+    margin-left: 22px;
+}
+
+.submit-button {
+   text-align: center;
+    margin: 30px 0 30px;
+}
+
+.submit-button-input {
+    text-decoration: none;
+    border: 1px solid black;
+    color: black;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 8px 30px;
+    margin: 0 10px;
+    background-color: #ffffff;
+}
+
+
+@font-face {
+    font-family: Arvo-auto;
+    src: local("Arvo"),url(https://fonts.gstatic.com/s/arvo/v9/rC7kKhY-eUDY-ucISTIf5PesZW2xOQ-xsNqO47m55DA.woff2) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Apple-SD-Gothic-Neo;
+    font-weight: 300;
+    src: url(../fonts/AppleSDGothicNeoL.cca2bd1f.woff) format("woff"),url(../fonts/AppleSDGothicNeoL.b07ac29c.ttf) format("truetype");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Apple-SD-Gothic-Neo;
+    font-weight: 400;
+    src: url(../fonts/AppleSDGothicNeoM.2fa42760.woff) format("woff"),url(../fonts/AppleSDGothicNeoM.3a44ffb1.ttf) format("truetype");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Apple-SD-Gothic-Neo;
+    font-weight: 700;
+    src: url(../fonts/AppleSDGothicNeoB.46e7b354.woff) format("woff"),url(../fonts/AppleSDGothicNeoB.018066fb.ttf) format("truetype");
+    font-display: swap
+}
+
+@font-face {
+    font-family: helvetica;
+    font-weight: 400;
+    src: url(https://hello.myfonts.net/count/39fcec39FCEC_0_0.eot);
+    src: url(../fonts/helvetica-regular.8a9cb23f.woff) format("woff"),url(../fonts/helvetica-regular.8a9cb23f.woff) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: helvetica;
+    font-weight: 700;
+    src: url(https://hello.myfonts.net/count/39fcec39FCEC_0_0.eot);
+    src: url(../fonts/helvetica-bold.b54fd96f.woff) format("woff"),url(../fonts/helvetica-bold.b54fd96f.woff) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Gmarket-Sans;
+    font-weight: 400;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6100/GmarketSansMedium-6e8819.woff) format("woff");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Gmarket-Sans;
+    font-weight: 700;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6098/GmarketSansBold-a25280.woff) format("woff");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Pretendard;
+    font-weight: 300;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6259/Pretendard-Light-8f686c.woff2) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Pretendard;
+    font-weight: 400;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6261/Pretendard-Regular-bac296.woff2) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Pretendard;
+    font-weight: 500;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6260/Pretendard-Medium-146472.woff2) format("woff2");
+    font-display: swap
+}
+
+@font-face {
+    font-family: Pretendard;
+    font-weight: 700;
+    src: url(https://cdn.winc.app/uploads/ppb/file/file/6258/Pretendard-Bold-c45234.woff2) format("woff2");
+    font-display: swap
+}

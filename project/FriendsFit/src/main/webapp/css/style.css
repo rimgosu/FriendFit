@@ -1,4 +1,4 @@
-@charset "EUC-KR";@charset "EUC-KR";
+@charset "EUC-KR";
 
 * {
     margin: 0px;
@@ -110,7 +110,7 @@ html, body {
 }
 
 .navbar-ul li:hover{
-	opacity: 0.5;
+   opacity: 0.5;
 }
 
 .navbar-li {
@@ -146,7 +146,7 @@ html, body {
 }
 
 .searchsection{
-	box-sizing: border-box;
+   box-sizing: border-box;
     padding: 16px 26px 0px;
 }
 
@@ -194,7 +194,7 @@ html, body {
 }
 
 .category-item:hover{
-	opacity: 0.5;
+   opacity: 0.5;
 }
 
 
@@ -202,7 +202,7 @@ html, body {
     width: 388.011px;
     height: 436px;
     padding: 26px 26px 26px 26px;
-    background-color: #ffffff;
+    background-color: aquamarine;
 }
 
 .map {
@@ -351,7 +351,7 @@ h1{
     margin-inline-end: 0px;
 }
 
-#header img{
+.top-header img{
     height: 17px;
     cursor: pointer;
     user-select: none;
@@ -494,7 +494,48 @@ main{
 }
 
 .searchsection{
-	padding: 20px 0px 20px 100px;
+   padding: 20px 0px 20px 100px;
 }
 
+.GlobalHeader__StyledRightButtonGroup {
+       min-width: 30px;
+       display: block;
+}
 
+.GlobalHeader__StyledButton {
+   width: 30px;
+    height: 30px;
+    padding: unset;
+    line-height: 0;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    
+    appearance: auto;
+    text-rendering: auto;
+    color: buttontext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    margin: 0em;
+}
+
+.GlobalHeader__StyledButton * {
+   fill: rgb(76, 76, 76);
+    color: rgb(76, 76, 76);   
+}
+
+.userprofile {   
+    border-radius: 24px;
+    width: 24px;
+    height: 24px;
+    
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}

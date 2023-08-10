@@ -1,3 +1,4 @@
+<%@page import="com.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,12 +8,16 @@
 <title>FriendsFit</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/slideStyle.css">
+<link rel="stylesheet" href="css/communityWrite.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 </head>
 <body>
 	<div id="whole">
 		<div id="mainframe">
 			<div id="main-content">
+				<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
 				<div id="header">
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
@@ -20,27 +25,34 @@
 						<!-- <h1>Our fit</h1> -->
 					</div>
 					<div class="button-group">
-						<form action="login.html">
+
+						<% if(info == null){ %>
+						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
+						<% }else{ %>
+						<div class="GlobalHeader__StyledRightButtonGroup">
+							<button class="GlobalHeader__StyledButton">
+								<img src="img/userimage.png" alt="user profile"
+									class="userprofile" style="cursor: pointer"
+									onclick="location.href='mypage.jsp'">
+							</button>
+						</div>
+						<% } %>
 					</div>
 				</div>
 
-				<div>커뮤니티 글쓰기 페이지</div>
-				<div>
+				<h2 class="page-title">커뮤니티 글쓰기</h2>
+				<br>
+				<div class="divider"></div>
 
-					<form action="communityAction" method="post"
+				<div class="form-container">
+					<form class="community-form" action="communityAction" method="post"
 						enctype="multipart/form-data">
-
-						<div>
-
-							<input type="text" name="commuTitle">
-
-						</div>
-						<div>
-
-							<select name="facilityCategory">
+						<div class="category-selection">
+							<div class="category-label">카테고리를 선택해주세요.
+							<select class="category-select" name="facilityCategory">
 								<option>헬스장</option>
 								<option>수영</option>
 								<option>자세교정</option>
@@ -51,26 +63,24 @@
 								<option>골프</option>
 								<option>기타시설</option>
 							</select>
-
+							</div>
 						</div>
-						<div>
-
-							<input type="file" name="file">
-
+						<div class="title-input">
+							<input class="title-field" placeholder="제목을 입력해 주세요." type="text"
+								name="commuTitle">
 						</div>
-						<div>
-
-							<textarea name="commuContent" rows="8" cols="40"></textarea>
+						<div class="file-input">
+							<input class="file-field" type="file" name="file">
+						</div>
+						<div class="content-input">
+							<textarea class="content-field" name="commuContent" rows="30"
+								cols="55"></textarea>
 							<br>
-
 						</div>
-						<div>
-
-							<input type="submit" value="등록">
-
+						<div class="submit-button">
+							<input id="submit-click" type="submit" value="등록">
 						</div>
 					</form>
-
 				</div>
 
 				<div id="footer">

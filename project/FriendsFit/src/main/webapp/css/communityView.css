@@ -1,0 +1,93 @@
+.page-title {
+    padding-left: 15px;
+}
+
+.divider {
+    border-bottom: 1px solid #323232;
+}
+
+.form-container {
+    /* Style for the overall form container */
+}
+
+.community-form {
+    /* Style for the form itself */
+}
+
+.category-selection {
+    font-size: 15px;
+    width: 420px;
+    height: 30px;
+	margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #c0c0c0;
+    margin-left: 9px;
+}
+
+.category-label {
+	padding-top: 1px;
+	margin-left: 6px;
+
+}
+
+.category-select {
+	height: 28px;
+	margin-left: 53px;
+	width: 180px;
+	
+}
+
+.title-input {
+    
+}
+
+.title-field {
+	margin-bottom: 15px;
+    margin-left: 9px;
+    padding-left: 6px;
+    width: 412px;;
+    height: 30px;
+    border: 1px solid #c0c0c0;
+	
+}
+
+.file-field {
+	margin-left: 9px;
+}
+
+.content-input {
+    min-height: 200px;
+}
+
+.content-field {
+    margin-left: 9px;
+}
+
+.submit-button {
+    margin-top: 15px;
+    margin-left: 9px;
+    margin-bottom: 15px;
+}
+
+.file-input {
+	margin-bottom: 15px;
+}
+
+#submit-click {
+	min-width: 46px;
+    height: 36px;
+    margin-bottom: 15px;
+    padding: 0 12px;
+    font-size: 13px;
+    line-height: 36px;
+
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #E4CA01;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: top;
+}
+

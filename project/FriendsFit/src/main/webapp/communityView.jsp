@@ -1,3 +1,4 @@
+<%@page import="com.model.MemberDTO"%>
 <%@page import="com.model.communityComment_memberDTO"%>
 <%@page import="com.model.communityCommentDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -30,6 +31,7 @@
 	<div id="whole">
 		<div id="mainframe">
 			<div id="main-content">
+				<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
 				<div id="header">
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
@@ -37,10 +39,21 @@
 						<!-- <h1>Our fit</h1> -->
 					</div>
 					<div class="button-group">
-						<form action="login.html">
+
+						<% if(info == null){ %>
+						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
+						<% }else{ %>
+						<div class="GlobalHeader__StyledRightButtonGroup">
+							<button class="GlobalHeader__StyledButton">
+								<img src="img/userimage.png" alt="user profile"
+									class="userprofile" style="cursor: pointer"
+									onclick="location.href='mypage.jsp'">
+							</button>
+						</div>
+						<% } %>
 					</div>
 				</div>
 
@@ -168,5 +181,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

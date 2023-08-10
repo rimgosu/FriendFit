@@ -1,3 +1,4 @@
+<%@page import="com.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,10 +10,10 @@
 <link rel="stylesheet" href="css/slideStyle.css">
 
 
-
 </head>
 <body>
-	
+	<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+
 	<div id="whole">
 		<div id="mainframe">
 			<div id="main-content">
@@ -23,10 +24,21 @@
 						<!-- <h1>Our fit</h1> -->
 					</div>
 					<div class="button-group">
-						<form action="login.html">
+
+						<% if(info == null){ %>
+						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
+						<% }else{ %>
+						<div class="GlobalHeader__StyledRightButtonGroup">
+							<button class="GlobalHeader__StyledButton">
+								<img src="img/userimage.png" alt="user profile"
+									class="userprofile" style="cursor: pointer"
+									onclick="location.href='mypage.jsp'">
+							</button>
+						</div>
+						<% } %>
 					</div>
 				</div>
 				<div id="main" style="background-color: white;">
@@ -101,9 +113,9 @@
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/swim.png" alt="수영" width="40"
-											class="menu-category"> <span type="caption2"
-											color="#000000" class="menu-text">수영</span>
+										<a href="facilityList.jsp"></a> <img src="img/swim.png"
+											alt="수영" width="40" class="menu-category"> <span
+											type="caption2" color="#000000" class="menu-text">수영</span>
 									</div>
 								</li>
 								<li class="category-item">
@@ -156,12 +168,8 @@
 					</div>
 
 
-					<div class="mapbox" style="background-color: #ffffff;">
-					
-						<div class="map">
-							<div id="map" style="width: 387.997px; height: 435.994px;"></div>
-						</div>
-
+					<div class="mapbox">
+						<div class="map"></div>
 					</div>
 
 
@@ -221,8 +229,5 @@
 	</div>
 
 	<script type="text/javascript" src="js/mainBanner.js"></script>
-	<script
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79769e254f2328cac41473351ff2b861"></script>
-	<script src="js/_map2.js"></script>
 </body>
 </html>

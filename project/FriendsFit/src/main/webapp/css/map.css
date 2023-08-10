@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+#main {
+   background-color: white;
+}
+
+#mainframe {
+   width: 440px;
+   height: auto;
+   background-color: #ffffff;
+   box-shadow: 10px 0px 20px -10px rgba(0, 0, 0, 0.2), -10px 0px 20px -10px
+      rgba(0, 0, 0, 0.2);
+}
+
+#map {
+   width: 440px; 
+   height: 900px;
+}
+
+#aside{
+   width: 400px;
+   word-break: break-all;
+    word-wrap: break-word;
+    -webkit-text-size-adjust: none;
+}
+
+svg {
+   width: 16px;
+   height: 18px;
+   display: block;
+}
+
+a {
+   text-decoration: none;
+}
+
+a:-webkit-any-link {
+   color: -webkit-link;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+element.style {
+   padding: 15px;
+}
+
+.zD5Nm {
+   padding: 16px 18px 14px;
+   text-align: center;
+}
+
+.zD5Nm.f7aZ0 .YouOG .Fc1rA {
+   font-weight: 600;
+   font-size: 1.2rem;
+   margin-right: 6px;
+}
+
+.zD5Nm.f7aZ0 .YouOG .DJJvD {
+   font-size: 1.0rem;
+   font-size: 0.9rem;
+   margin-top: 6px;
+   color: #8f8f8f;
+}
+
+.zD5Nm.f7aZ0 .info-review .PXMot {
+   font-size: 1.0rem;
+   margin-top: 3px;
+   display: inline-block;
+   vertical-align: top;
+   position: relative;
+   white-space: nowrap;
+}
+
+
+.DNzQ2 {
+   float: left;
+   margin-right: 10px;
+}
+
+
+.info-container >div {
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+
+.thin-border {
+    border-top: 0.667px solid #dcdcdc;
+}
