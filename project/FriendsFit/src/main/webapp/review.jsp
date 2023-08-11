@@ -19,6 +19,12 @@
 <body>
 	<%
 	MemberDTO info = (MemberDTO) session.getAttribute("info");
+	int pageNum = 0;
+	if (request.getParameter("pageNum") == null) {
+		pageNum = 1;
+	} else {
+		pageNum = Integer.parseInt(request.getParameter("pageNum"));
+	}
 	%>
 
 	<div id="whole">
@@ -84,14 +90,15 @@
 						dbDAO dbdao = new dbDAO();
 						ArrayList<reviewSelectDTO> reviewList = new ArrayList<reviewSelectDTO>();
 
-						reviewList = dbdao.getReviews();
 						fileDAO filedao = new fileDAO();
 						ocrDAO ocrdao = new ocrDAO();
+						
+						reviewList = dbdao.getReviews1(pageNum);
 
 						for (int i = 0; i < reviewList.size(); i++) {
 							String fileRealName = filedao.getFileRealName(reviewList.get(i).getFileNum());
 
-							reviewHTML += "<div class=\"community-list-item\">";
+							reviewHTML += "<div class=\"community-list-item\" id=\"" + (i + 1) + "-review-top\">";
 							reviewHTML += "<div class=\"CommunityListItem__StyledListItemContent\">";
 							//영수증
 							reviewHTML += "<div class=\"CommunityListItem__bill\">";
@@ -106,8 +113,8 @@
 								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(1) + "</div>";
 								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(2) + "</div>";
 								reviewHTML += "</div>";
-								
-							} 
+
+							}
 							// 아이디, 포인트
 							reviewHTML += "<div class=\"UserProfileInCommunity__StyledUserProfileInCommunity\">";
 							reviewHTML += "<img src=\"img/userimage.png\" class=\"UserProfileInCommunity__StyledImg\" alt=\"profile image\">";
@@ -181,7 +188,8 @@
 						out.print(reviewHTML);
 						%>
 
-
+						<a
+							href="review.jsp?pageNum=<%=pageNum + 1%>#<%=pageNum * 5 + 1%>-review-top">더보기</a>
 
 
 					</div>

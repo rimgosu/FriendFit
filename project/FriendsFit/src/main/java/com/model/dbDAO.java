@@ -141,6 +141,48 @@ public class dbDAO {
 		}
 		return list;
 	}
+	
+	public ArrayList<reviewSelectDTO> getReviews1(int pageNum) {
+	      ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
+	      getConnection();
+	      try {
+	         String sql="SELECT *"
+	               + "FROM ("
+	               + "    SELECT"
+	               + "        REVIEW_NUM,"
+	               + "        REVIEW_TITLE,"
+	               + "        REVIEW_CONTENT,"
+	               + "        MEMBER_ID,"
+	               + "        FILE_NUM,"
+	               + "        FACILITY_NUM,"
+	               + "        REVIEW_LIKE,"
+	               + "        REVIEW_VIEW,"
+	               + "        REVIEW_GRADE,"
+	               + "        REVIEW_DAY,"
+	               + "        ROW_NUMBER() OVER (ORDER BY REVIEW_DAY DESC) AS rn"
+	               + "    FROM TB_REVIEW"
+	               + ")"
+	               + "WHERE rn BETWEEN 1 AND ? * 5";
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setInt(1, pageNum);
+	         // (? - 1) * 10)
+	         ResultSet rs = psmt.executeQuery();
+	         while (rs.next()) {
+	            reviewSelectDTO reviews = new reviewSelectDTO(
+	                  rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+	                  rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getString(10)
+	                  );
+	            list.add(reviews);
+	         }
+	         return list;
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return list;
+	   }
 
 	public reviewSelectDTO getReview(int reviewNum) {
 		ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
