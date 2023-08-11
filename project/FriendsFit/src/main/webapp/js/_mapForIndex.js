@@ -1,13 +1,3 @@
-/**
- * 
- */
-var breaker;
-if (xClick === null) {
-	breaker = true;
-} else {
-	breaker = false;
-}
-
 
 navigator.geolocation.getCurrentPosition(function(position) {
 	console.log("Latitude is :", position.coords.latitude);
@@ -16,26 +6,14 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
 
 	var mapContainer;
-	if (breaker) {
-		mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = {
+	mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
 
-				center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
-				level: 4, // 지도의 확대 레벨
-				mapTypeId: kakao.maps.MapTypeId.ROADMAP
-				// 지도종류
-			};
-	} else {
-		mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = {
-
-				center: new kakao.maps.LatLng(yClick, xClick), // 지도의 중심좌표
-				level: 4, // 지도의 확대 레벨
-				mapTypeId: kakao.maps.MapTypeId.ROADMAP
-				// 지도종류
-			};
-	}
-
+			center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude), // 지도의 중심좌표
+			level: 4, // 지도의 확대 레벨
+			mapTypeId: kakao.maps.MapTypeId.ROADMAP
+			// 지도종류
+		};
 	// 지도를 생성한다 
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 

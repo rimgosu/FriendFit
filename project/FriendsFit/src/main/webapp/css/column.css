@@ -1,0 +1,154 @@
+@charset "EUC-KR";
+
+:lang(ko) {
+    font-family: 'Libre Baskerville','Nanum Gothic';
+}
+
+.column-wrapper {
+	position: relative;
+    overflow-x: hidden;
+}
+
+.column-wrapper div{
+	display: block;
+}
+
+.column-list-item-content {
+	padding: 26px;
+}
+
+.column-user-profile {
+	display: flex!important;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.column-wrapper img {
+	overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.UserProfileInColumn {
+	margin-right: 8px;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.column-writer {
+	margin-right: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: 0px;
+}
+
+.jcThmW {
+    margin-right: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: rgb(102, 102, 102);
+}
+
+.column-day {
+	margin-right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: rgb(153, 153, 153);
+    white-space: nowrap;
+}
+
+.column-contents {
+	font-size: 16px;
+    font-weight: normal;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: rgb(0, 0, 0);
+}
+
+.column-title {
+	display: block;
+    margin-top: 12px;
+    white-space: pre-line;
+}
+
+.column-img-box {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.column-img {
+	animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal;
+    width: 100%;
+    max-height: 213px;
+    position: relative;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    background: linear-gradient(-45deg, rgb(224, 224, 224), rgb(224, 224, 224), rgb(241, 241, 241), rgb(241, 241, 241)) 0% 0% / 400% 400%;
+    animation: 1s ease-in 0s infinite normal none running gradientBG;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.column-img img {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.hibHiS {
+    height: 1px;
+    background-color: rgb(236, 236, 236) !important;
+}
+
+.reviewWrite {
+   padding: 16px 26px 8px;
+}
+
+.reviewWrite_Box {
+   padding: 0px 12px;
+   
+   box-sizing: border-box;
+    border-radius: 8px;
+    border: 0;
+    position: relative;
+    height: 32px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: #000000;
+    background-color: #E4CA01;
+}
+
+.reviewInner {
+   display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.writeIcon {
+   margin-left: 4px;
+    stroke: rgb(214, 214, 214);
+    background-color: #E4CA01;
+}

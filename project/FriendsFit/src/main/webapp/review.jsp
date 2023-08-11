@@ -101,10 +101,12 @@
 							reviewHTML += "</span>";
 							reviewHTML += "</div>";
 							if (ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).size() == 3) {
+								reviewHTML += "<div class=\"bill-info-box\">";
 								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(0) + "</div>";
 								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(1) + "</div>";
 								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(2) + "</div>";
-
+								reviewHTML += "</div>";
+								
 							} 
 							// 아이디, 포인트
 							reviewHTML += "<div class=\"UserProfileInCommunity__StyledUserProfileInCommunity\">";

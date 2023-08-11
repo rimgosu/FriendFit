@@ -1,3 +1,7 @@
+<%@page import="file.model.fileDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.dbDAO"%>
+<%@page import="com.model.columnDTO"%>
 <%@page import="com.model.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -13,6 +17,7 @@
 </head>
 <body>
 	<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+	<% columnDTO col = new columnDTO(); %>
 
 	<div id="whole">
 		<div id="mainframe">
@@ -21,7 +26,6 @@
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
 							style="cursor: pointer" onclick="location.href='index.jsp'">
-						<!-- <h1>Our fit</h1> -->
 					</div>
 					<div class="button-group">
 
@@ -85,18 +89,17 @@
 
 					</div>
 					<br>
-
-					<div style="text-align: center">
-						<span class="dot"></span> <span class="dot"></span> <span
-							class="dot"></span>
-					</div>
-
-
-
+					
+					 <div style="text-align:center">
+                       <span class="dot"></span> 
+                       <span class="dot"></span> 
+                       <span class="dot"></span> 
+                     </div>
+					
 
 					<div class="category-info">
-						<h1 style="width: 388px; height: 28px; font-size: 20px;">관심있는
-							운동을 선택해보세요.</h1>
+						<h1 class="category-info-title">
+						관심있는 운동을 선택해보세요.</h1>
 
 					</div>
 
@@ -168,39 +171,68 @@
 					</div>
 
 
-					<div class="mapbox" style="background:white;">
+					<div class="mapbox">
+						<div class="mapbox-title">
+							<h5 class="mapbox-title-box">
+								<strong class="title-1">
+								내 근처 
+								<span class="title-2">
+								시설
+								</span> 
+								빠르게 확인하기
+								</strong>
+							</h5>
+						</div>
+						<div class="mapbox-guide"></div>
 						<div class="map" id="map"></div>
 					</div>
+					
+						
 
 
 					<div class="communityframe">
 						<div class="communitybox">
 							<div class="communitybox-intro">
-
-								<h2 style="float: left;">커뮤니티</h2>
-								<div class="seeall-arrow"></div>
+								<h2 class="community-Title">커뮤니티</h2>
 								<div class="seeall">
-									<a href="">전체보기</a>
+									<a href="column.jsp">전체보기</a>
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+										xmlns="http://www.w3.org/2000/svg" role="presentation">
+                                    <path
+											d="M9.971 5.875 16.375 12l-6.404 6.125-.596-.637L15.113 12 9.375 6.51l.596-.636Z"
+											fill="#4C4C4C" stroke="#4C4C4C" stroke-linejoin="round"></path>
+                                    </svg>
 								</div>
-
 							</div>
+
 							<ul class="communitybox-contents">
+								<%
+								dbDAO dbdao = new dbDAO();
+								columnDTO cldto = new columnDTO();
+								ArrayList<columnDTO> columnlist = dbdao.getColumns();
+								fileDAO filedao = new fileDAO();
+								
+								for (int i = 0; i < 4; i++) {
+									String fileRealName = filedao.getFileRealName(columnlist.get(i).getFileNum());
+							%>
 								<li class="communitybox-content"><img src="" alt=""
 									class="communitybox-content-img">
-									<p class="communitybox-content-title">헬스장 추천</p>
-									<h3 class="communitybox-content-detail">지역 헬스장 추천 받아가세요</h3></li>
-								<li class="communitybox-content"></li>
-								<li class="communitybox-content"></li>
-								<li class="communitybox-content"></li>
+									<p class="communitybox-content-title"><%=columnlist.get(i).getColumnWriter()%></p>
+									<h3 class="communitybox-content-detail"><%=columnlist.get(i).getColumnTitle()%></h3>
+								</li>
+								<%
+								}
+                            %>
 							</ul>
 						</div>
 					</div>
 				</div>
 
 				<div id="footer">
-					<h1>FriendsFit</h1>
-					피트니스크루<br> 팀장 김대현: ysm691611@naver.com<br> 변지협 오주현 류혜림
-					염다영<br> 인공지능사관학교<br> @all rights reserved
+					<h3>FriendsFit</h3>
+					<span>피트니스크루<br> 팀장 김대현: ysm691611@naver.com<br>
+						변지협 오주현 류혜림 염다영<br> 인공지능사관학교<br> @all rights reserved
+					</span>
 				</div>
 			</div>
 
@@ -227,10 +259,9 @@
 
 		</div>
 	</div>
-
-	<script type="text/javascript" src="js/mainBanner.js"></script>
 	<script
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=79769e254f2328cac41473351ff2b861"></script>
-	<script src="js/_map2.js"></script>
+	<script src="js/_mapForIndex.js"></script>
+	<script type="text/javascript" src="js/mainBanner.js"></script>
 </body>
 </html>

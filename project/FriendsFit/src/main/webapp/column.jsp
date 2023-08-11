@@ -12,6 +12,7 @@
 <title>FriendsFit</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/slideStyle.css">
+<link rel="stylesheet" href="css/column.css">
 <style type="text/css">
 textarea {
     white-space: pre-wrap;
@@ -52,42 +53,62 @@ textarea {
 				</div>
 
 				<div id="main" style="background-color: white;">
-					<a href="columnWrite.jsp">컬럼 쓰기</a> (단, 관리자만 쓸 수 있어야함)
+					<%if(info != null && info.getMember_id() != null && info.getMember_id().equals("admin")) { %>
+					<div class="reviewWrite">
+						<div class="reviewWrite_Box">
+							<div class="reviewInner">
+								<span style="cursor: pointer"
+									onclick="location.href='columnWrite.jsp'"><b>컬럼 쓰기</b></span> <img
+									src="img/writeIcon.png" width="16" height="16"
+									viewBox="0 0 24 24" fill="none" class="writeIcon">
+							</div>
+						</div>
+					</div>
+					<%} %>
 
 					<!-- 리뷰댓글보기 -->
 					<%
 					dbDAO dbdao = new dbDAO();
 					columnDTO cldto = new columnDTO();
 					ArrayList<columnDTO> columnlist = dbdao.getColumns();
-					fileDAO filedao = new fileDAO();
+					fileDAO filedao = new fileDAO();%>
 					
+					<div class="column-wrapper">
+					<%
 					for (int i = 0; i < columnlist.size(); i++) {
 						String fileRealName = filedao.getFileRealName(columnlist.get(i).getFileNum());
 					%>
-					<div class="column-wrapper">
 						<div class="column-list-item">
 							<div class="column-list-item-content">
-								<div class="column-title"><%=columnlist.get(i).getColumnTitle()%></div>
-								<div class="column-img"><img style="width:420px; padding-right: 10px; padding-left: 10px" src="upload/<%= fileRealName %>"></div>
-								<div class="column-writer">
-									<%=columnlist.get(i).getColumnWriter()%></div>
-								<div style="white-space:pre-line;" class="column-contents">
-									<%=columnlist.get(i).getColumnContent()%>
+								<div class="column-img-box">
+									<div class="column-img">
+										<img src="upload/<%= fileRealName %>">
+									</div>
 								</div>
-								<div class="column-day">
-									<%=columnlist.get(i).getColumnDay()%>
+								<div class="column-user-profile">
+									<img src="img/userimage.png" alt="profile image" class="UserProfileInColumn">
+									<div class="column-writer">
+										<%=columnlist.get(i).getColumnWriter()%></div>
+									<div class="UserProfileInCommunity__StyledDot-sc-w1vfwl-3 jcThmW">·</div>
+									<div class="column-day">
+										<%=columnlist.get(i).getColumnDay()%>
+									</div>
 								</div>
+								<div class="column-contents">
+									<span class="column-title"><b>[ 🔎 <%=columnlist.get(i).getColumnTitle()%> 🔎 ]</b></span>
+									<span class="column-contents"><%=columnlist.get(i).getColumnContent()%></span>
+								</div>
+								
 							</div>
+							<div class="CommunityListItem__StyledDivider-sc-e2ofnp-11 hibHiS"></div>
 
 						</div>
-					</div>
-					<% if (i < columnlist.size() -1 ) { %>
-					<hr style="margin-top:15px; margin-left: 5px; margin-right: 5px; margin-bottom:15px;">
+					
 					
 					<%
 					}
-					}
 					%>
+					</div>
 
 
 				</div>
