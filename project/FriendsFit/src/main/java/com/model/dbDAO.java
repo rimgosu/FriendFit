@@ -122,7 +122,7 @@ public class dbDAO {
 		ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
 		getConnection();
 		try {
-			String sql = "select * from tb_review WHERE ROWNUM <= 10";
+			String sql = "SELECT * FROM (SELECT * FROM tb_review ORDER BY review_num DESC ) WHERE ROWNUM <= 5";
 			psmt = conn.prepareStatement(sql);
 			ResultSet rs = psmt.executeQuery();
 			while (rs.next()) {
@@ -619,6 +619,8 @@ public class dbDAO {
 		}
 		return like;
 	}
+	
+	
 	
 }
 

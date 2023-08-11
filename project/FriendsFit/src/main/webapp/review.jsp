@@ -1,3 +1,4 @@
+<%@page import="ocr.model.ocrDAO"%>
 <%@page import="file.model.fileDAO"%>
 <%@page import="com.model.MemberDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -85,6 +86,7 @@
 
 						reviewList = dbdao.getReviews();
 						fileDAO filedao = new fileDAO();
+						ocrDAO ocrdao = new ocrDAO();
 
 						for (int i = 0; i < reviewList.size(); i++) {
 							String fileRealName = filedao.getFileRealName(reviewList.get(i).getFileNum());
@@ -98,6 +100,12 @@
 							reviewHTML += "영수증후기";
 							reviewHTML += "</span>";
 							reviewHTML += "</div>";
+							if (ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).size() == 3) {
+								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(0) + "</div>";
+								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(1) + "</div>";
+								reviewHTML += "<div>" + ocrdao.getOCRInformation(reviewList.get(i).getReviewNum()).get(2) + "</div>";
+
+							} 
 							// 아이디, 포인트
 							reviewHTML += "<div class=\"UserProfileInCommunity__StyledUserProfileInCommunity\">";
 							reviewHTML += "<img src=\"img/userimage.png\" class=\"UserProfileInCommunity__StyledImg\" alt=\"profile image\">";

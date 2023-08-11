@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -19,6 +20,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import file.model.fileDAO;
+import ocr.model.KeyDAO;
+import ocr.model.gpt3DAO;
+import ocr.model.ocrDAO;
 
 /**
  * Servlet implementation class reviewAction
@@ -88,6 +92,38 @@ public class reviewAction extends HttpServlet {
 				int fileNum = 0;
 				fileNum = dbdao.fileUpload(fileName, fileRealName);
 				dbdao.reviewUpload(reviewdto, fileNum);
+				
+				KeyDAO keyDAO = new KeyDAO("C://keys/keys.json");
+				// TODO Auto-generated method stub
+				String API_KEY = keyDAO.getKeyValue("gptPrivateKey");
+				String invokeUrl = keyDAO.getKeyValue("clovaOCRInvokeURL"); 
+		        String secretKey = keyDAO.getKeyValue("clovaOCRPrivateKey");
+		        
+		        
+		        String format = "png";
+		        String uploadDirectory = this.getServletContext().getRealPath("/upload/");
+		        String url = uploadDirectory + fileRealName ;
+				ocrDAO ocrdao = new ocrDAO(invokeUrl, secretKey, format, url);
+				
+				String prompt; 
+				try {
+					prompt = ocrdao.callOcrApi();
+					prompt += "'주소 : ?"
+							+ "총금액 : ?"
+							+ "상호명 : ?'"
+							+ "물음표에 각각 값을 넣어 줘"
+							+ "그 외 다른 어떤 말도 덧붙이지마.";
+			        gpt3DAO gptdao = new gpt3DAO(API_KEY, prompt);
+			        System.out.println(gptdao.getAiResponse());
+			        
+			        ArrayList<String> parsedValues = ocrdao.parseInformation(gptdao.getAiResponse());
+			        int reviewNum = ocrdao.getLastReviewNum();
+			        ocrdao.OCRUpload(parsedValues.get(0), parsedValues.get(1), parsedValues.get(2), reviewNum);
+			        
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 			

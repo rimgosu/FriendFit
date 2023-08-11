@@ -35,9 +35,11 @@ public class LoginAction extends HttpServlet {
 		MemberDTO info = dao.login(id, pw);
 		
 		if(info != null) {
-			HttpSession session = request.getSession();
-			session.setAttribute("info", info);
+		    HttpSession session = request.getSession();
+		    session.setAttribute("info", info);
+		    session.setMaxInactiveInterval(3600); // 30분 (30 * 60초)
 		}
+
 		
 		response.sendRedirect("index.jsp");
 		
