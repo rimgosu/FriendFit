@@ -18,14 +18,13 @@
 <link rel="stylesheet" href="css/communityClick.css">
 
 <%
-	String commuNum = request.getParameter("commuNum");
-	int commuNumInt = Integer.parseInt(commuNum);
-	dbDAO dbdao = new dbDAO();
-	communityDTO cdto = dbdao.getCommunity(commuNumInt);
-	
-	fileDAO filedao = new fileDAO();
-	String fileRealName = filedao.getFileRealName(cdto.getFileNum());
-	
+String commuNum = request.getParameter("commuNum");
+int commuNumInt = Integer.parseInt(commuNum);
+dbDAO dbdao = new dbDAO();
+communityDTO cdto = dbdao.getCommunity(commuNumInt);
+
+fileDAO filedao = new fileDAO();
+String fileRealName = filedao.getFileRealName(cdto.getFileNum());
 %>
 
 
@@ -35,7 +34,9 @@
 	<div id="whole">
 		<div id="mainframe">
 			<div id="main-content">
-				<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+				<%
+				MemberDTO info = (MemberDTO) session.getAttribute("info");
+				%>
 				<div id="header">
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
@@ -44,12 +45,16 @@
 					</div>
 					<div class="button-group">
 
-						<% if(info == null){ %>
+						<%
+						if (info == null) {
+						%>
 						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
-						<% }else{ %>
+						<%
+						} else {
+						%>
 						<div class="GlobalHeader__StyledRightButtonGroup">
 							<button class="GlobalHeader__StyledButton">
 								<img src="img/userimage.png" alt="user profile"
@@ -57,7 +62,9 @@
 									onclick="location.href='mypage.jsp'">
 							</button>
 						</div>
-						<% } %>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
@@ -67,36 +74,53 @@
 					<div class="row">
 
 						<div class="bbs-title">
-							<%= cdto.getCommuTitle() %>
+							<%=cdto.getCommuTitle()%>
 						</div>
 
 						<div class="user-info">
 							<div class="user-id">
-								<%= cdto.getMemberID() %>
+								<%=cdto.getMemberID()%>
 							</div>
 							<div class="user-divider">·</div>
 							<div class="community-day">
-								<%= cdto.getCommuDay() %>
+								<%=cdto.getCommuDay()%>
 							</div>
 						</div>
 
 						<div class="bbs-content">
-							<div class="Community-image"><img style="width:420px; padding-right: 10px; padding-left: 10px" src="upload/<%= fileRealName %>"></div>
-								
-							<div class="content-text">
-								<%= cdto.getCommuContent() %>
+							<div class="Community-image">
+								<img
+									style="width: 420px; padding-right: 10px; padding-left: 10px"
+									src="upload/<%=fileRealName%>">
 							</div>
+
+							<div class="content-text">
+								<%=cdto.getCommuContent()%>
+							</div>
+
+							<div class="community-like-area">
+								<form
+									action="<%if (info != null && info.getMember_id() != null) {%>communityLikeService<%} else {%>communityView.jsp?commuNum=<%=commuNum%><%}%>">
+									<input name="commuNum" value="<%=commuNum%>" type="hidden">
+									<input type="submit" value="좋아요">
+								</form>
+								<div><%=dbdao.getCommunityLike(commuNumInt)%></div>
+							</div>
+
 						</div>
 
 					</div>
-					<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+					<script
+						src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 					<script src="js/bootstrap.js"></script>
+
 
 					<!-- 리뷰댓글쓰기 -->
 					<form action="communityCommentAction" method="post">
-						<%= commuNum %>
+						<%=commuNum%>
 						<div class="commu-comment-textarea">
-							<input name="cNum" value="<%= commuNum %>" style="display: none;">
+							<input name="cNum" value="<%=commuNum%>" style="display: none;">
 							<textarea name="commuComment" maxlength="440"
 								data-testid="comment-textarea" placeholder="댓글을 입력해주세요."
 								class="CommunityDetailTemplate__StyledCommentTextarea-sc-alice7-27"

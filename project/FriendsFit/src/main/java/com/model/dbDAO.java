@@ -575,6 +575,50 @@ public class dbDAO {
 	    }
 	    return null;
 	}
+	
+	public void updateCommunityLike(int commuNum, String sessionMemberID ) {
+		getConnection();
 
+		try {
+			String sql = "INSERT INTO TB_community_like VALUES (?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			psmt.setString(2, sessionMemberID);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+	}
+
+	public int getCommunityLike(int commuNum) {
+		getConnection();
+		System.out.println(commuNum);
+		int like = 0;
+		try {
+			String sql = "SELECT COUNT(DISTINCT session_member_id)\r\n"
+					+ "FROM tb_community_like\r\n"
+					+ "WHERE commu_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				like = rs.getInt(1);
+			}
+			return like;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return like;
+	}
+	
 }
 

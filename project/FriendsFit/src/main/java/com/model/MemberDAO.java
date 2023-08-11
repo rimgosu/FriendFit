@@ -80,6 +80,7 @@ public class MemberDAO {
             System.out.println(info.toString());
 
          }
+         return info;
 
       } catch (SQLException e) {
          e.printStackTrace();
