@@ -10,6 +10,19 @@
 <link rel="stylesheet" href="css/slideStyle.css">
 <link rel="stylesheet" href="css/communityWrite.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- font-start -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100&display=swap"
+	rel="stylesheet">
+<style type="text/css">
+* {
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+<!-- font-end -->
 
 
 </head>

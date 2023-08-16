@@ -144,7 +144,7 @@ public class dbDAO {
 	
 	public ArrayList<reviewSelectDTO> getReviews1(int pageNum) {
 	      ArrayList<reviewSelectDTO> list = new ArrayList<reviewSelectDTO>();
-	      getConnection();
+	      
 	      try {
 	         String sql="SELECT *"
 	               + "FROM ("
@@ -178,9 +178,7 @@ public class dbDAO {
 	      } catch (SQLException e) {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
-	      } finally {
-	         close();
-	      }
+	      } 
 	      return list;
 	   }
 
@@ -276,7 +274,7 @@ public class dbDAO {
 
 	public ArrayList<reviewComment_memberDTO> getReviewComment(int reviewNum) {
 		ArrayList<reviewComment_memberDTO> list = new ArrayList<reviewComment_memberDTO>();
-		getConnection();
+		
 		try {
 			String sql = "select a.member_id, MEMBER_POINT, a.REVIEW_COMMENT_DAY, REVIEW_COMMENT_CONTENT, REVIEW_COMMENT_LIKE from tb_review_comment a, tb_member b where a.member_id = b.member_id and review_num=?";
 			psmt = conn.prepareStatement(sql);
@@ -291,9 +289,7 @@ public class dbDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			close();
-		}
+		} 
 		return null;
 	}
 
@@ -661,6 +657,285 @@ public class dbDAO {
 		}
 		return like;
 	}
+	
+	
+	// juhyun- like, see updated
+
+	public void updateReviewLike(int reviewNum, String sessionMemberID ) {
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO TB_review_like VALUES (?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewNum);
+			psmt.setString(2, sessionMemberID);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+	}
+	
+	public int getReviewLike(int reviewNum) {
+		
+		System.out.println(reviewNum);
+		int like = 0;
+		try {
+			String sql = "SELECT COUNT(DISTINCT session_member_id)\r\n"
+					+ "FROM tb_review_like\r\n"
+					+ "WHERE review_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewNum);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				like = rs.getInt(1);
+			}
+			return like;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return like;
+	}
+	
+	public void updateReviewCommentLike(int reviewcommentNum, String sessionMemberID ) {
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO TB_review_comment_like VALUES (?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewcommentNum);
+			psmt.setString(2, sessionMemberID);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+	}
+	
+	public int getReviewCommentLike(int reviewcommentNum) {
+		getConnection();
+		System.out.println(reviewcommentNum);
+		int like = 0;
+		try {
+			String sql = "SELECT COUNT(DISTINCT session_member_id)\r\n"
+					+ "FROM tb_review_comment_like\r\n"
+					+ "WHERE review_comment_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewcommentNum);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				like = rs.getInt(1);
+			}
+			return like;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return like;
+	}
+	
+	public void updateReviewSee(int reviewNum, String sessionMemberID ) {
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO TB_review_see VALUES (?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewNum);
+			psmt.setString(2, sessionMemberID);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+	}
+	
+	public int getReviewSee(int reviewNum) {
+		
+		System.out.println(reviewNum);
+		int like = 0;
+		try {
+			String sql = "SELECT COUNT(DISTINCT session_member_id)\r\n"
+					+ "FROM tb_review_see\r\n"
+					+ "WHERE review_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, reviewNum);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				like = rs.getInt(1);
+			}
+			return like;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return like;
+	}
+	
+	public void updateCommunitySee(int commuNum, String sessionMemberID ) {
+		getConnection();
+
+		try {
+			String sql = "INSERT INTO TB_community_see VALUES (?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			psmt.setString(2, sessionMemberID);
+
+			cnt = psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+	}
+	
+	public int getCommunitySee(int commuNum) {
+		getConnection();
+		System.out.println(commuNum);
+		int like = 0;
+		try {
+			String sql = "SELECT COUNT(DISTINCT session_member_id)\r\n"
+					+ "FROM tb_community_see\r\n"
+					+ "WHERE commu_num = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			ResultSet rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				like = rs.getInt(1);
+			}
+			return like;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return like;
+	}
+	
+	public int deleteCommunity(int commuNum) {
+		getConnection();
+		
+		int cnt = 0;
+		
+		try {
+			String sql = "DELETE FROM TB_COMMUNITY WHERE COMMU_NUM = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, commuNum);
+			cnt = psmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	
+		return cnt;
+	}
+	
+	public ArrayList<communityDTO> getCommunities_pagingUpdated(int pageNum) {
+	      ArrayList<communityDTO> list = new ArrayList<communityDTO>();
+	      getConnection();
+	      try {
+	         
+	         String sql = "select commu_num, commu_title, commu_content, file_num, member_id,"
+	               + "commu_like, commu_view, commu_day, facility_category\r\n"
+	               + "  from (\r\n"
+	               + "       select rownum as rn\r\n"
+	               + "            , A.*\r\n"
+	               + "         from (\r\n"
+	               + "              select *\r\n"
+	               + "                from tb_community\r\n"
+	               + "               order by commu_num desc\r\n"
+	               + "         ) A\r\n"
+	               + "        where rownum <= 15 * ?\r\n"
+	               + "  )\r\n"
+	               + " where rn >= 15 * (? - 1) + 1";
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setInt(1, pageNum);
+	         psmt.setInt(2, pageNum);
+	         
+	         // (? - 1) * 10)
+	         ResultSet rs = psmt.executeQuery();
+	         while (rs.next()) {
+	            communityDTO reviews = new communityDTO(
+	                  rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+	                  rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9)
+	                  );
+	            list.add(reviews);
+	         }
+	         return list;
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return list;
+	   }
+	
+	
+	public ArrayList<communityDTO> getCommunities_pagingUpdated_categoryUpdated(int pageNum, String category) {
+	      ArrayList<communityDTO> list = new ArrayList<communityDTO>();
+	      getConnection();
+	      try {
+	         
+	         String sql = "select commu_num, commu_title, commu_content, file_num, member_id,"
+	               + "commu_like, commu_view, commu_day, facility_category\r\n"
+	               + "  from (\r\n"
+	               + "       select rownum as rn\r\n"
+	               + "            , A.*\r\n"
+	               + "         from (\r\n"
+	               + "              select *\r\n"
+	               + "                from tb_community\r\n"
+	               + "				 where facility_category= ?"
+	               + "               order by commu_num desc\r\n"
+	               + "         ) A\r\n"
+	               + "        where rownum <= 15 * ?\r\n"
+	               + "  )\r\n"
+	               + " where rn >= 15 * (? - 1) + 1";
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setString(1, category);
+	         psmt.setInt(2, pageNum);
+	         psmt.setInt(3, pageNum);
+	         
+	         // (? - 1) * 10)
+	         ResultSet rs = psmt.executeQuery();
+	         while (rs.next()) {
+	            communityDTO reviews = new communityDTO(
+	                  rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5),
+	                  rs.getInt(6), rs.getInt(7), rs.getString(8), rs.getString(9)
+	                  );
+	            list.add(reviews);
+	         }
+	         return list;
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return list;
+	   }
 	
 	
 	

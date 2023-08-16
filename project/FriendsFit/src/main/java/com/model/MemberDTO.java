@@ -87,6 +87,18 @@ public class MemberDTO {
       this.day = day;
    }
       
+   public MemberDTO(String member_id, String passwd, String name, int age, String mobile, String year, String addr
+            ) {
+         super();
+         this.member_id = member_id;
+         this.passwd = passwd;
+         this.name = name;
+         this.age = age;
+         this.mobile = mobile;
+         this.year = year;
+         this.addr = addr;
+         
+      }
    @Override
    public String toString() {
       return "MemberDTO [member_id=" + member_id + ", passwd=" + passwd + ", user_passwd_confirm="

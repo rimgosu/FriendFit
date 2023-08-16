@@ -106,8 +106,10 @@ public class reviewAction extends HttpServlet {
 				ocrDAO ocrdao = new ocrDAO(invokeUrl, secretKey, format, url);
 				
 				String prompt; 
+				System.out.println("in reviewAction..");
 				try {
 					prompt = ocrdao.callOcrApi();
+					System.out.println(prompt);
 					prompt += "'주소 : ?"
 							+ "총금액 : ?"
 							+ "상호명 : ?'"

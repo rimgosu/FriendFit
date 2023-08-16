@@ -131,7 +131,7 @@ $(document).ready(function() {
 
 						<section class="review-star-section">
 							<label class="review-star">이 시설의 만족도는 어떤가요?</label>
-							<div class="star-rating space-x-4 mx-auto">
+							<div class="star-rating space-x-4 mx-auto" style="margin-top: 5px;">
 								<input type="radio" id="5-stars" name="reviewGrade" value="5"
 									v-model="ratings" /> <label for="5-stars" class="star pr-4">★</label>
 								<input type="radio" id="4-stars" name="reviewGrade" value="4"

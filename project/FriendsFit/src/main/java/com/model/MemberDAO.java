@@ -80,7 +80,6 @@ public class MemberDAO {
             System.out.println(info.toString());
 
          }
-         return info;
 
       } catch (SQLException e) {
          e.printStackTrace();
@@ -93,19 +92,20 @@ public class MemberDAO {
 
    public void join(MemberDTO memberDTO) {
       getConnection();
-      
-      String sql = "INSERT INTO TB_MEMBER VALUES(?,?,?,?,?,?,?,?,?)";
+      System.out.println(memberDTO);
+      String sql = "INSERT INTO TB_MEMBER VALUES(?,?,?,?,?,?,?,0,sysdate)";
       try {
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, memberDTO.getMember_id());
          psmt.setString(2, memberDTO.getPasswd());
          psmt.setString(3, memberDTO.getName());
-         psmt.setString(4, memberDTO.getAddr());
-         psmt.setInt(5, memberDTO.getAge());
-         psmt.setString(6, memberDTO.getMobile());
-         psmt.setString(7, memberDTO.getYear());
-         psmt.setInt(8, memberDTO.getPoint());
-         psmt.setString(9, memberDTO.getDay());
+         psmt.setInt(4, memberDTO.getAge());
+         psmt.setString(5, memberDTO.getMobile());
+         psmt.setString(6, memberDTO.getYear());
+         psmt.setString(7, memberDTO.getAddr());
+         psmt.executeUpdate();
+         //psmt.setInt(8, memberDTO.getPoint());
+         //psmt.setString(9, memberDTO.getDay());
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {

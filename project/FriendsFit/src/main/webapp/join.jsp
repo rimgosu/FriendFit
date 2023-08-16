@@ -22,7 +22,7 @@
                    
                    <!-- join form -->
                    <div class="joinwrap">
-                      <form id="joinForm" name="joinForm" action="joinAction" method="post" target="_self" enctype="multipart/form-data">
+                      <form id="joinForm" name="joinForm" action="joinAction" method="post" target="_self">
                       <div class="titleArea">
                       <h2>회원 가입</h2>
                   </div>
@@ -111,7 +111,7 @@
                            <img src="img/ico_required_red.jpg" alt="필수">
                            </th>
                                <td>                                  
-                               <form action="" name="form1">
+                               
                                    <input id="postcode" name="zipcode" class="inputTypeText" readonly maxlength="5" type="text">                    
                                    <input type="button" value="우편번호" style="cursor:pointer" class="btnNormal" id="btn"><br>
                                    <input id="addr1" name="addr1" class="inputTypeText" readonly type="text"> 
@@ -120,7 +120,7 @@
                                    <input id="addr2" name="addr2" class="inputTypeText" type="text"> 
                                    나머지주소 (선택입력가능)      
                                    <input id="addr3" name="addr3" class="inputTypeText" type="text">           
-                               </form>
+                              
                                
                                <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
                                <script src="js/post.js"></script>
@@ -144,7 +144,7 @@
                               나이
                            </th>
                            <td>
-                           <input id="age" name="age" fw-filter="" fw-label="나이" fw-msg="" class="inputTypeNum" placeholder="" maxlength="4" value="" type="number">
+                           <input id="age" name="age" fw-filter="" fw-label="나이" fw-msg="" class="inputTypeNum"  maxlength="4" type="text">
                               세
                            </td>
                         </tr>
@@ -153,7 +153,7 @@
                               연락처
                            </th>
                            <td>
-                              <select id="mobile1" name="mobile[]" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="">
+                              <select id="mobile1" name="mobile1" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="">
                                  <option value="010">010</option>
                                  <option value="011">011</option>
                                  <option value="016">016</option>
@@ -187,9 +187,9 @@
                                  <option value="070">070</option>
                               </select>
                                  -
-                                 <input id="mobile2" name="mobile[]" maxlength="4" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">
+                                 <input id="mobile2" name="mobile2" maxlength="4" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">
                                  -
-                                 <input id="mobile3" name="mobile[]" maxlength="4" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">
+                                 <input id="mobile3" name="mobile3" maxlength="4" fw-filter="isNumber" fw-label="휴대전화" fw-alone="N" fw-msg="" value="" type="text">
                            </td>
                         </tr>
                         <tr class="">
@@ -197,7 +197,7 @@
                               운동경력
                            </th>
                            <td>
-                              <select id="career" name="career" fw-filter fw-label="운동경력" fw-msg>
+                              <select id="career" name="year" fw-filter fw-label="운동경력" fw-msg>
                                  <option value selected="selected">선택</option>
                                  <option value="career_01">입문</option>
                                  <option value="career_02">초급</option>
@@ -212,7 +212,8 @@
                </div>
                
                <div class="ec-base-button">
-                    <a href="joinAction" class="btnSubmitFix sizeM" onclick="memberJoinAction()">회원가입</a>
+                    <!-- <a href="joinAction" class="btnSubmitFix sizeM" onclick="memberJoinAction()">회원가입</a> -->
+                    <input type="submit" value="회원가입" class="btnSubmitFix sizeM">
                 </div>
                </form>
             </div>

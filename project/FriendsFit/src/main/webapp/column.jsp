@@ -13,11 +13,33 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/slideStyle.css">
 <link rel="stylesheet" href="css/column.css">
+<!-- font-start -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100&display=swap"
+	rel="stylesheet">
+<style type="text/css">
+* {
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+<!-- font-end -->
 <style type="text/css">
 textarea {
-    white-space: pre-wrap;
+	white-space: pre-wrap;
 }
-
+span {
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+b {
+	font-size: 17px;
+}
+.column-user-profile {
+	margin-top: 10px;
+}
 </style>
 
 
@@ -26,7 +48,9 @@ textarea {
 	<div id="whole">
 		<div id="mainframe">
 			<div id="main-content">
-				<% MemberDTO info = (MemberDTO)session.getAttribute("info"); %>
+				<%
+				MemberDTO info = (MemberDTO) session.getAttribute("info");
+				%>
 				<div id="header">
 					<div class="top-header">
 						<img src="img/FFlogo.png" alt="friendsfit-logo"
@@ -35,12 +59,16 @@ textarea {
 					</div>
 					<div class="button-group">
 
-						<% if(info == null){ %>
+						<%
+						if (info == null) {
+						%>
 						<form action="login.jsp">
 							<button type="submit" class="sign-in-button"
 								formaction="login.jsp">로그인 / 가입</button>
 						</form>
-						<% }else{ %>
+						<%
+						} else {
+						%>
 						<div class="GlobalHeader__StyledRightButtonGroup">
 							<button class="GlobalHeader__StyledButton">
 								<img src="img/userimage.png" alt="user profile"
@@ -48,12 +76,16 @@ textarea {
 									onclick="location.href='mypage.jsp'">
 							</button>
 						</div>
-						<% } %>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
 				<div id="main" style="background-color: white;">
-					<%if(info != null && info.getMember_id() != null && info.getMember_id().equals("admin")) { %>
+					<%
+					if (info != null && info.getMember_id() != null && info.getMember_id().equals("admin")) {
+					%>
 					<div class="reviewWrite">
 						<div class="reviewWrite_Box">
 							<div class="reviewInner">
@@ -64,50 +96,55 @@ textarea {
 							</div>
 						</div>
 					</div>
-					<%} %>
+					<%
+					}
+					%>
 
 					<!-- 리뷰댓글보기 -->
 					<%
 					dbDAO dbdao = new dbDAO();
 					columnDTO cldto = new columnDTO();
 					ArrayList<columnDTO> columnlist = dbdao.getColumns();
-					fileDAO filedao = new fileDAO();%>
-					
-					<div class="column-wrapper">
-					<%
-					for (int i = 0; i < columnlist.size(); i++) {
-						String fileRealName = filedao.getFileRealName(columnlist.get(i).getFileNum());
+					fileDAO filedao = new fileDAO();
 					%>
+
+					<div class="column-wrapper">
+						<%
+						for (int i = 0; i < columnlist.size(); i++) {
+							String fileRealName = filedao.getFileRealName(columnlist.get(i).getFileNum());
+						%>
 						<div class="column-list-item">
 							<div class="column-list-item-content">
 								<div class="column-img-box">
 									<div class="column-img">
-										<img src="upload/<%= fileRealName %>">
+										<img src="upload/<%=fileRealName%>">
 									</div>
 								</div>
 								<div class="column-user-profile">
-									<img src="img/userimage.png" alt="profile image" class="UserProfileInColumn">
+									<img src="img/userimage.png" alt="profile image"
+										class="UserProfileInColumn">
 									<div class="column-writer">
 										<%=columnlist.get(i).getColumnWriter()%></div>
-									<div class="UserProfileInCommunity__StyledDot-sc-w1vfwl-3 jcThmW">·</div>
+									<div
+										class="UserProfileInCommunity__StyledDot-sc-w1vfwl-3 jcThmW">·</div>
 									<div class="column-day">
 										<%=columnlist.get(i).getColumnDay()%>
 									</div>
 								</div>
 								<div class="column-contents">
-									<span class="column-title"><b>[ 🔎 <%=columnlist.get(i).getColumnTitle()%> 🔎 ]</b></span>
-									<span class="column-contents"><%=columnlist.get(i).getColumnContent()%></span>
+									<span class="column-title"><b>[ 🔎 <%=columnlist.get(i).getColumnTitle()%>🔎 ]
+									</b></span> <span class="column-contents"><%=columnlist.get(i).getColumnContent()%></span>
 								</div>
-								
+
 							</div>
 							<div class="CommunityListItem__StyledDivider-sc-e2ofnp-11 hibHiS"></div>
 
 						</div>
-					
-					
-					<%
-					}
-					%>
+
+
+						<%
+						}
+						%>
 					</div>
 
 

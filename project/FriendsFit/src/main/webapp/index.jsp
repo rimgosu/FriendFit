@@ -13,6 +13,19 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/slideStyle.css">
 
+<!-- font-start -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100&display=swap"
+	rel="stylesheet">
+<style type="text/css">
+* {
+	font-family: 'Nanum Gothic Coding', monospace;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+</style>
+<!-- font-end -->
 
 </head>
 <body>
@@ -89,17 +102,15 @@
 
 					</div>
 					<br>
-					
-					 <div style="text-align:center">
-                       <span class="dot"></span> 
-                       <span class="dot"></span> 
-                       <span class="dot"></span> 
-                     </div>
-					
+
+					<div style="text-align: center">
+						<span class="dot"></span> <span class="dot"></span> <span
+							class="dot"></span>
+					</div>
+
 
 					<div class="category-info">
-						<h1 class="category-info-title">
-						관심있는 운동을 선택해보세요.</h1>
+						<h1 class="category-info-title">관심있는 운동을 선택해보세요.</h1>
 
 					</div>
 
@@ -109,56 +120,56 @@
 							<ol class="category-box-ol">
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/fitness.png" alt="헬스장"
+										<a href="community.jsp?category=헬스장"></a> <img src="img/fitness.png" alt="헬스장"
 											width="40" class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">헬스장</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href="facilityList.jsp"></a> <img src="img/swim.png"
+										<a href="community.jsp?category=수영"></a> <img src="img/swim.png"
 											alt="수영" width="40" class="menu-category"> <span
 											type="caption2" color="#000000" class="menu-text">수영</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/flexibility.png" alt="필라테스"
+										<a href="community.jsp?category=자세교정"></a> <img src="img/flexibility.png" alt="필라테스"
 											width="40" class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">자세교정</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/crossfit.png" alt="크로스핏"
+										<a href="community.jsp?category=크로스핏"></a> <img src="img/crossfit.png" alt="크로스핏"
 											width="40" class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">크로스핏</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/racket.png" alt="라켓스포츠"
+										<a href="community.jsp?category=라켓스포츠"></a> <img src="img/racket.png" alt="라켓스포츠"
 											width="40" class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">라켓스포츠</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/climb.png" alt="클라이밍" width="40"
+										<a href="community.jsp?category=클라이밍"></a> <img src="img/climb.png" alt="클라이밍" width="40"
 											class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">클라이밍</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/mudo.png" alt="무도장" width="40"
+										<a href="community.jsp?category=무도장"></a> <img src="img/mudo.png" alt="무도장" width="40"
 											class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">무도장</span>
 									</div>
 								</li>
 								<li class="category-item">
 									<div>
-										<a href=""></a> <img src="img/golf.png" alt="골프" width="40"
+										<a href="community.jsp?category=골프"></a> <img src="img/golf.png" alt="골프" width="40"
 											class="menu-category"> <span type="caption2"
 											color="#000000" class="menu-text">골프</span>
 									</div>
@@ -174,20 +185,16 @@
 					<div class="mapbox">
 						<div class="mapbox-title">
 							<h5 class="mapbox-title-box">
-								<strong class="title-1">
-								내 근처 
-								<span class="title-2">
-								시설
-								</span> 
-								빠르게 확인하기
+								<strong class="title-1"> 내 근처 <span class="title-2">
+										시설 </span> 빠르게 확인하기
 								</strong>
 							</h5>
 						</div>
 						<div class="mapbox-guide"></div>
 						<div class="map" id="map"></div>
 					</div>
-					
-						
+
+
 
 
 					<div class="communityframe">
@@ -215,7 +222,7 @@
 								for (int i = 0; i < 4; i++) {
 									String fileRealName = filedao.getFileRealName(columnlist.get(i).getFileNum());
 							%>
-								<li class="communitybox-content"><img src="" alt=""
+								<li class="communitybox-content"><img src="upload/<%=fileRealName%>" alt=""
 									class="communitybox-content-img">
 									<p class="communitybox-content-title"><%=columnlist.get(i).getColumnWriter()%></p>
 									<h3 class="communitybox-content-detail"><%=columnlist.get(i).getColumnTitle()%></h3>
