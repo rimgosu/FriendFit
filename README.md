@@ -41,7 +41,7 @@ friendFit은 위치기반 운동정보 종합 플래폼으로 신뢰할 수 있�
 
 
 ## HOW TO USE
-friendFut은 eclipse 2023-06r, oracle, javasdk(Java SE Development Kit 8), apache tomcat 9 를 바탕으로 제작되었습니다.
+friendFit은 eclipse 2023-06r, oracle, javasdk(Java SE Development Kit 8), apache tomcat 9 를 바탕으로 제작되었습니다.
 라이브러리는 전부 깃허브에 포함되어 있으므로 따로 다운로드할 필요는 없습니다.
 * 설치 가이드: <https://youtu.be/SdbzUNyic9I>
 
