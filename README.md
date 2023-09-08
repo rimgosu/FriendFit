@@ -1,4 +1,6 @@
 ### FriendFit 프로젝트
+![image](https://github.com/rimgosu/FriendFit/assets/120752098/c6996ee4-f65e-45ab-b306-f2cfa040029e)
+
 ---
 
 
