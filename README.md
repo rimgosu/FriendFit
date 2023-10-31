@@ -9,14 +9,14 @@
 
 
 ## 개요
-friendFit은 위치기반 운동정보 종합 플래폼으로 신뢰할 수 있는 운동정보 리뷰와 커뮤니티 기능을 구현하였습니다.
+FriendFit은 위치기반 운동정보 종합 플래폼으로 신뢰할 수 있는 운동정보 리뷰와 커뮤니티 기능을 구현하였습니다.
 
 ###### 기간: 2023.07.14 ~ 2023.08.18 (약 1달)
 
 ###### 주요 기능 및 특징:
 
-1. 위치 기반 서비스: friendFit은 사용자의 현재 위치를 기반으로 주변의 운동 시설, 헬스장, 공원, 자전거 도로 등을 편리하게 찾을 수 있게 해줍니다.
-2. 운동 컬럼: friendFit은 운동에 관한 유용한 정보, 올바른 운동 방법, 영양 팁 등을 제공하여 사용자들의 건강한 라이프스타일을 지원합니다.
+1. 위치 기반 서비스: FriendFit은 사용자의 현재 위치를 기반으로 주변의 운동 시설, 헬스장, 공원, 자전거 도로 등을 편리하게 찾을 수 있게 해줍니다.
+2. 운동 컬럼: FriendFit은 운동에 관한 유용한 정보, 올바른 운동 방법, 영양 팁 등을 제공하여 사용자들의 건강한 라이프스타일을 지원합니다.
 3. 커뮤니티 서비스: 운동 카테고리에 맞춰 커뮤니티의 전반적인 기능을 지원합니다.
 4. OCR 리뷰 인증 서비스: OCR 기반 리뷰 인증 서비스를 지원합니다.
 5. 거미줄 같은 웹페이지: 어디에 있든 원하는 페이지를 빠르게 탐색할 수 있는 망형 구조의 웹사이트입니다.
@@ -43,21 +43,21 @@ friendFit은 위치기반 운동정보 종합 플래폼으로 신뢰할 수 있�
 
 
 ## HOW TO USE
-friendFit은 eclipse 2023-06r, oracle, javasdk(Java SE Development Kit 8), apache tomcat 9 를 바탕으로 제작되었습니다.
+FriendFit은 eclipse 2023-06r, oracle, javasdk(Java SE Development Kit 8), apache tomcat 9 를 바탕으로 제작되었습니다.
 라이브러리는 전부 깃허브에 포함되어 있으므로 따로 다운로드할 필요는 없습니다.
 * 설치 가이드: <https://youtu.be/SdbzUNyic9I>
 
 ###### 1. git clone 생성
 
     git init
-    git clone https://github.com/rimgosu/friendFit.git
+    git clone https://github.com/rimgosu/FriendFit.git
    
 ###### 2. eclipse 세팅
 1. switch workspace로 project 폴더 선택
 2. import projects - general - existing projects into workspace - browse - 폴더 선택 - finish
 3. apache tomcat 불러오기 servers - no servers are available. click this link to create a new server... - apache - tomcat v9.0 server - browse - resources - apache-tomcat-9.0.78 선택 (friendFit에 포함되어 있습니다.) - tomcat v 9.0 더블클릭 - http/1.1을 8094~8099로 수정 후 저장
-4. project explorer - friendFit 우클릭 - properties - java build path - classpath에 있는 jar 라이브러리 전부 삭제 - apply and close
-5. project explorer - friendFit 우클릭 - properties - project facets - java, javascript, dynamic web module 선택 후 apply and close
+4. project explorer - FriendFit 우클릭 - properties - java build path - classpath에 있는 jar 라이브러리 전부 삭제 - apply and close
+5. project explorer - FriendFit 우클릭 - properties - project facets - java, javascript, dynamic web module 선택 후 apply and close
 6. src- main - webapp - index.jsp 실행
 
 ###### 3. key 세팅
